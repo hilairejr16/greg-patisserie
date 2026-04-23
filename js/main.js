@@ -257,7 +257,7 @@ function showPaymentInstructions(method) {
   if (!infoBox) return;
 
   const instructions = {
-    interac: `<strong>Interac e-Transfer:</strong> Send payment to <em>gregpatisserie@email.com</em>. Include your name and order in the message. We will confirm your order upon receipt.`,
+    interac: `<strong>Interac e-Transfer:</strong> Send payment to <em>gregpatisserie@gmail.com</em>. Include your name and order in the message. We will confirm your order upon receipt.`,
     credit: `<strong>Credit Card:</strong> You will be redirected to our secure Stripe payment page after order confirmation.`,
     debit: `<strong>Debit / Chequing:</strong> In-person debit accepted at pickup, or e-Transfer to our account. Details sent by email.`,
     paypal: `<strong>PayPal:</strong> A PayPal payment request will be sent to your email. Complete payment to confirm your order.`,

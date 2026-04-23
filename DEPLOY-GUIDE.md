@@ -110,7 +110,7 @@ The website is already a **Progressive Web App (PWA)**. Customers can install it
 1. Download **WhatsApp Business** app
 2. Set up business profile for Greg Patisserie
 3. Use **Broadcast Lists** to send promos to up to 256 contacts at once
-4. Create a WhatsApp link: `https://wa.me/15141234567` (already in the website)
+4. Create a WhatsApp link: `https://wa.me/15148848463` (already in the website)
 
 ### Facebook/Instagram
 - Connect Facebook Business Suite (free)
