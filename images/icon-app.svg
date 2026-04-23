@@ -1,0 +1,89 @@
+<!-- App icon: 1024x1024, dark background with gold cake logo — used for App Store & Play Store -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C1810"/>
+      <stop offset="100%" style="stop-color:#1a0f0a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="200" fill="url(#bg)"/>
+
+  <!-- Gold border ring -->
+  <rect x="30" y="30" width="964" height="964" rx="180" fill="none" stroke="url(#gold)" stroke-width="8" opacity="0.5"/>
+
+  <!-- Cake – plate -->
+  <ellipse cx="512" cy="730" rx="230" ry="38" fill="#D4AF37" opacity="0.18"/>
+
+  <!-- Cake – base tier -->
+  <rect x="300" y="624" width="424" height="110" rx="22" fill="#8B4513" opacity="0.85"/>
+  <rect x="300" y="624" width="424" height="30" rx="18" fill="#A0522D" opacity="0.6"/>
+
+  <!-- Cake – mid tier -->
+  <rect x="342" y="494" width="340" height="134" rx="18" fill="#6B3410" opacity="0.9"/>
+  <rect x="342" y="494" width="340" height="26" rx="14" fill="#7B3D12" opacity="0.6"/>
+
+  <!-- Cake – top tier -->
+  <rect x="390" y="364" width="244" height="134" rx="16" fill="#5C2D0E"/>
+
+  <!-- Frosting drips – top tier -->
+  <path d="M390 390 Q398 360 406 390 Q414 360 422 390 Q430 360 438 390 Q446 360 454 390 Q462 360 470 390 Q478 360 486 390 Q494 360 502 390 Q510 360 518 390 Q526 360 534 390 Q542 360 550 390 Q558 360 566 390 Q574 360 582 390 Q590 360 598 390 Q606 360 614 390 Q622 360 630 390"
+        stroke="#FFF8DC" stroke-width="10" fill="none" opacity="0.9"/>
+
+  <!-- Frosting drips – mid tier -->
+  <path d="M342 522 Q350 492 358 522 Q366 492 374 522 Q382 492 390 522 Q398 492 406 522 Q414 492 422 522 Q430 492 438 522 Q446 492 454 522 Q462 492 470 522 Q478 492 486 522 Q494 492 502 522 Q510 492 518 522 Q526 492 534 522 Q542 492 550 522 Q558 492 566 522 Q574 492 582 522 Q590 492 598 522 Q606 492 614 522 Q622 492 630 522 Q638 492 646 522 Q654 492 662 522 Q670 492 678 522"
+        stroke="#FFF8DC" stroke-width="8" fill="none" opacity="0.7"/>
+
+  <!-- Candles -->
+  <rect x="440" y="292" width="28" height="76" rx="10" fill="#E91E8C"/>
+  <rect x="498" y="272" width="28" height="96" rx="10" fill="#FFD700"/>
+  <rect x="556" y="292" width="28" height="76" rx="10" fill="#E91E8C"/>
+
+  <!-- Flames -->
+  <ellipse cx="454" cy="280" rx="14" ry="22" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="512" cy="258" rx="16" ry="26" fill="#FF8C00" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="570" cy="280" rx="14" ry="22" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+
+  <!-- Stars -->
+  <text x="220" y="540" font-size="52" fill="#D4AF37" opacity="0.4" filter="url(#glow)">✦</text>
+  <text x="750" y="510" font-size="40" fill="#D4AF37" opacity="0.4" filter="url(#glow)">✦</text>
+  <text x="200" y="660" font-size="30" fill="#D4AF37" opacity="0.3">✦</text>
+  <text x="780" y="650" font-size="30" fill="#D4AF37" opacity="0.3">✦</text>
+
+  <!-- Brand text -->
+  <text x="512" y="840"
+        font-family="Georgia, serif"
+        font-size="110"
+        font-weight="700"
+        font-style="italic"
+        fill="url(#gold)"
+        text-anchor="middle"
+        filter="url(#glow)">Greg</text>
+
+  <text x="512" y="898"
+        font-family="Georgia, serif"
+        font-size="48"
+        letter-spacing="18"
+        fill="#FFF8DC"
+        text-anchor="middle"
+        opacity="0.85">PATISSERIE</text>
+
+  <!-- Bottom line -->
+  <line x1="200" y1="930" x2="824" y2="930" stroke="url(#gold)" stroke-width="2" opacity="0.35"/>
+  <text x="512" y="966"
+        font-family="Georgia, serif"
+        font-size="28"
+        letter-spacing="8"
+        fill="#D4AF37"
+        text-anchor="middle"
+        opacity="0.55">LAVAL · QC</text>
+</svg>
