@@ -54,6 +54,7 @@
       <li><a href="#menu"      data-i18n="nav_menu">Notre Carte</a></li>
       <li><a href="#order"     data-i18n="nav_order">Commander</a></li>
       <li><a href="#catering"  data-i18n="nav_catering">Traiteur</a></li>
+      <li><a href="#gallery">Galerie</a></li>
       <li><a href="#about"     data-i18n="nav_about">À propos</a></li>
       <li><a href="#contact"   data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -461,6 +462,99 @@
 </section>
 
 <!-- ========================================================
+     GALLERY
+     ======================================================== -->
+<section class="section bg-linen" id="gallery">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label">Galerie · Gallery</span>
+      <h2>Our Creations</h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p style="max-width:550px;margin:0 auto;color:var(--text-mid)">Every piece is handcrafted with love. Follow us <a href="https://www.instagram.com/gregory1824" target="_blank" style="color:var(--gold);font-weight:600">@gregory1824</a> for the latest creations.</p>
+    </div>
+
+    <!-- Gallery grid – replace emoji placeholders with real <img> tags when photos are ready -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem">
+      <!-- Row 1 -->
+      <div class="gallery-card" style="grid-row:span 2">
+        <div class="gallery-img" style="height:100%;min-height:320px;background:linear-gradient(135deg,#3d1f14,#2C1810);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;position:relative;cursor:pointer">
+          <div style="font-size:5rem">🎂</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.9) 0%,transparent 50%)"></div>
+          <div style="position:absolute;bottom:1rem;left:1rem;right:1rem;color:var(--cream)">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase">Wedding Cake</div>
+            <div style="font-size:1.1rem;font-weight:700">Multi-Tier Elegance</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div style="height:150px;background:linear-gradient(135deg,#5C2D0E,#8B4513);display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;position:relative;cursor:pointer">
+          <div style="font-size:3.5rem">🧁</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.85) 0%,transparent 60%)"></div>
+          <div style="position:absolute;bottom:.7rem;left:.8rem;color:var(--cream)">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase">Cupcakes</div>
+            <div style="font-size:.95rem;font-weight:700">Caribbean Coconut</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div style="height:150px;background:linear-gradient(135deg,#6B3410,#A0522D);display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;position:relative;cursor:pointer">
+          <div style="font-size:3.5rem">🍪</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.85) 0%,transparent 60%)"></div>
+          <div style="position:absolute;bottom:.7rem;left:.8rem;color:var(--cream)">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase">Cookies</div>
+            <div style="font-size:.95rem;font-weight:700">Custom Decorated</div>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="gallery-card">
+        <div style="height:150px;background:linear-gradient(135deg,#4a2010,#7B3D12);display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;position:relative;cursor:pointer">
+          <div style="font-size:3.5rem">🎂</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.85) 0%,transparent 60%)"></div>
+          <div style="position:absolute;bottom:.7rem;left:.8rem;color:var(--cream)">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase">Birthday</div>
+            <div style="font-size:.95rem;font-weight:700">Mango Passion</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div style="height:150px;background:linear-gradient(135deg,#3d1810,#5C2D0E);display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;position:relative;cursor:pointer">
+          <div style="font-size:3.5rem">🧁</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.85) 0%,transparent 60%)"></div>
+          <div style="position:absolute;bottom:.7rem;left:.8rem;color:var(--cream)">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase">Baby Shower</div>
+            <div style="font-size:.95rem;font-weight:700">Red Velvet Tower</div>
+          </div>
+        </div>
+      </div>
+      <!-- Full-width CTA card -->
+      <div class="gallery-card" style="grid-column:1/-1">
+        <div style="background:linear-gradient(135deg,var(--brown-dark),#3d1f14);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem">Share the Love</div>
+            <p style="color:var(--cream);font-size:1.1rem;font-weight:600">Tag us in your photos — <span style="color:var(--gold)">@gregory1824</span></p>
+            <p style="color:rgba(255,248,220,.6);font-size:.85rem;margin-top:.3rem">We'd love to feature your celebration on our page!</p>
+          </div>
+          <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+            <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" class="btn btn-primary" style="padding:.65rem 1.3rem;font-size:.8rem">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.facebook.com/gregpatisserie" target="_blank" rel="noopener" class="btn btn-outline" style="padding:.65rem 1.3rem;font-size:.8rem">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo upload note -->
+    <p style="text-align:center;margin-top:1.5rem;font-size:.82rem;color:var(--gray);font-family:'Montserrat',sans-serif">
+      <i class="fas fa-camera"></i> Real photos coming soon — send yours to <a href="mailto:gregpatisserie@gmail.com" style="color:var(--gold)">gregpatisserie@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================
      TESTIMONIALS
      ======================================================== -->
 <section class="section bg-linen" id="testimonials">
@@ -545,6 +639,16 @@
       <div class="section-divider"><span>✦</span></div>
     </div>
 
+    <!-- Google Maps Embed -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(44,24,16,.15);margin-bottom:3rem;height:300px">
+      <iframe
+        src="https://www.google.com/maps?q=1597+Mont%C3%A9e+Monette,+Laval,+QC+H7M4B6&output=embed"
+        width="100%" height="300" style="border:0;display:block"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Greg Patisserie location"></iframe>
+    </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
       <div>
         <div style="background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 4px 20px rgba(44,24,16,.1)">
@@ -552,7 +656,10 @@
             <i class="fas fa-map-marker-alt"></i>
             <div>
               <strong>Greg Patisserie</strong><br>
-              1597 Montée Monette, Laval, QC, H7M4B6, Canada
+              1597 Montée Monette, Laval, QC, H7M4B6, Canada<br>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=1597+Mont%C3%A9e+Monette,+Laval,+QC+H7M4B6" target="_blank" rel="noopener" style="font-size:.82rem;color:var(--gold);font-family:'Montserrat',sans-serif;font-weight:600">
+                <i class="fas fa-directions"></i> Get Directions
+              </a>
             </div>
           </div>
           <div class="footer-contact-item">
@@ -683,7 +790,7 @@
     <div class="footer-bottom">
       <span data-i18n="footer_rights">© 2025 Greg Patisserie. Tous droits réservés.</span>
       <span data-i18n="footer_owner">Gregory Olivier, Propriétaire</span>
-      <span>1597 Montée Monette, Laval, QC, H7M4B6, Canada 🇨🇦</span>
+      <a href="privacy.html" style="color:rgba(255,255,255,.5);font-size:.78rem">Privacy Policy</a>
     </div>
   </div>
 </footer>
@@ -723,6 +830,15 @@
   <button class="btn btn-primary install-btn" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:.78rem">Install App</button>
   <button class="install-dismiss"><i class="fas fa-times"></i></button>
 </div>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/15148848463?text=Bonjour%20Greg%20Patisserie!%20Je%20voudrais%20passer%20une%20commande."
+   target="_blank" rel="noopener"
+   title="Chat on WhatsApp"
+   style="position:fixed;bottom:2rem;right:2rem;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .25s ease;text-decoration:none"
+   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <i class="fab fa-whatsapp" style="color:#fff;font-size:1.7rem"></i>
+</a>
 
 <!-- Toast container -->
 <div class="toast-container"></div>
