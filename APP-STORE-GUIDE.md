@@ -69,7 +69,7 @@ Pâtisseries artisanales – Gâteaux, cupcakes, biscuits. Laval, QC.
 
 **Full description (4000 chars):**
 ```
-Greg Patisserie – Artisan bakery in Laval, Québec, Canada.
+Greg Patisserie – Artisan bakery in 1597 Montée Monette, Laval, QC, H7M4B6, Canada.
 
 Order custom cakes, cupcakes, and cookies online. We serve the Canadian and Haitian communities with authentic flavors and artisanal quality.
 
@@ -88,7 +88,7 @@ Order custom cakes, cupcakes, and cookies online. We serve the Canadian and Hait
 🌍 LANGUAGES:
 French · English · Haitian Creole · Spanish
 
-📍 Laval, Québec, Canada
+📍 1597 Montée Monette, Laval, QC, H7M4B6, Canada
 📞 (514) 884-8463
 ✉️ gregpatisserie@gmail.com
 📸 Instagram: @gregpatisserie
@@ -129,7 +129,7 @@ French · English · Haitian Creole · Spanish
 3. Enroll as **Individual** → Pay **$99 USD/year**
 4. Fill in:
    - **Legal name:** Gregory Olivier
-   - **Address:** Laval, QC, Canada
+   - **Address:** 1597 Montée Monette, Laval, QC, H7M4B6, Canada
 
 ### Step 2B.2 — Create App in App Store Connect
 1. Go to **appstoreconnect.apple.com**
@@ -151,7 +151,7 @@ Artisan Bakery · Laval, QC
 
 **Description (4000 chars):**
 ```
-Greg Patisserie – Artisan bakery in Laval, Québec, Canada.
+Greg Patisserie – Artisan bakery in 1597 Montée Monette, Laval, QC, H7M4B6, Canada.
 
 Order custom cakes, cupcakes, and cookies online. We proudly serve the Canadian and Haitian communities with authentic flavors and artisanal quality.
 
@@ -168,7 +168,7 @@ Order custom cakes, cupcakes, and cookies online. We proudly serve the Canadian 
 🌍 4 LANGUAGES
 Français · English · Kreyòl ayisyen · Español
 
-📍 Laval, Québec, Canada
+📍 1597 Montée Monette, Laval, QC, H7M4B6, Canada
 📞 (514) 884-8463
 ✉️ gregpatisserie@gmail.com
 ```

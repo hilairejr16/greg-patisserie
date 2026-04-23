@@ -1,7 +1,7 @@
 # Greg Patisserie – Deployment & Setup Guide
 
 **Owner:** Gregory Olivier  
-**Business:** Greg Patisserie, Laval, QC, Canada  
+**Business:** Greg Patisserie, 1597 Montée Monette, Laval, QC, H7M4B6, Canada  
 **Instagram/Twitter/Facebook:** @gregpatisserie
 
 ---
@@ -183,4 +183,4 @@ This website was fully built and will be maintained by **Claude (Anthropic)** as
 For updates, new pages, or features — bring your requests and Claude will implement them.
 
 **Gregory Olivier** – Owner  
-Greg Patisserie, Laval, QC, Canada 🇨🇦
+Greg Patisserie, 1597 Montée Monette, Laval, QC, H7M4B6, Canada 🇨🇦
