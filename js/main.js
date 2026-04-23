@@ -1,0 +1,364 @@
+/* ============================================================
+   Greg Patisserie – Main JavaScript
+   ============================================================ */
+
+/* ---------- Products Data ---------- */
+const products = [
+  // Cakes
+  { id: 1, category: 'cakes', emoji: '🎂', nameKey: 'Classic Birthday Cake', price: 45, desc: 'Vanilla sponge, buttercream, custom decoration', popular: true },
+  { id: 2, category: 'cakes', emoji: '🎂', nameKey: 'Chocolate Dream Cake', price: 55, desc: 'Rich dark chocolate layers, ganache', popular: true },
+  { id: 3, category: 'cakes', emoji: '🎂', nameKey: 'Caribbean Coconut Cake', price: 50, desc: 'Coconut cream, tropical fruits, Haitian inspired', popular: false },
+  { id: 4, category: 'cakes', emoji: '🎂', nameKey: 'Red Velvet Cake', price: 52, desc: 'Classic red velvet with cream cheese frosting', popular: false },
+  { id: 5, category: 'cakes', emoji: '🎂', nameKey: 'Wedding Tiered Cake', price: 150, desc: 'Custom multi-tier, personalized decoration', popular: false },
+  { id: 6, category: 'cakes', emoji: '🎂', nameKey: 'Mango Passion Cake', price: 48, desc: 'Fresh mango mousse, passion fruit glaze', popular: true },
+
+  // Cupcakes
+  { id: 7,  category: 'cupcakes', emoji: '🧁', nameKey: 'Vanilla Cupcakes (dz)', price: 28, desc: 'Classic vanilla with swirled buttercream', popular: true },
+  { id: 8,  category: 'cupcakes', emoji: '🧁', nameKey: 'Chocolate Cupcakes (dz)', price: 30, desc: 'Double chocolate with fudge filling', popular: true },
+  { id: 9,  category: 'cupcakes', emoji: '🧁', nameKey: 'Strawberry Cupcakes (dz)', price: 30, desc: 'Fresh strawberry cake with cream frosting', popular: false },
+  { id: 10, category: 'cupcakes', emoji: '🧁', nameKey: 'Lemon Cupcakes (dz)', price: 28, desc: 'Zesty lemon with cream cheese frosting', popular: false },
+  { id: 11, category: 'cupcakes', emoji: '🧁', nameKey: 'Red Velvet Cupcakes (dz)', price: 32, desc: 'Classic red velvet, mini version', popular: false },
+  { id: 12, category: 'cupcakes', emoji: '🧁', nameKey: 'Coconut Cupcakes (dz)', price: 30, desc: 'Caribbean coconut, Haitian inspired', popular: false },
+
+  // Cookies
+  { id: 13, category: 'cookies', emoji: '🍪', nameKey: 'Chocolate Chip Cookies (dz)', price: 18, desc: 'Crispy edge, chewy center, premium chips', popular: true },
+  { id: 14, category: 'cookies', emoji: '🍪', nameKey: 'Sugar Cookies (dz)', price: 20, desc: 'Decorated sugar cookies for events', popular: false },
+  { id: 15, category: 'cookies', emoji: '🍪', nameKey: 'Snickerdoodle Cookies (dz)', price: 18, desc: 'Cinnamon sugar classic', popular: false },
+  { id: 16, category: 'cookies', emoji: '🍪', nameKey: 'Peanut Butter Cookies (dz)', price: 20, desc: 'Rich peanut butter, soft & chewy', popular: false },
+  { id: 17, category: 'cookies', emoji: '🍪', nameKey: 'Shortbread Cookies (dz)', price: 22, desc: 'Buttery French-style shortbread', popular: false },
+  { id: 18, category: 'cookies', emoji: '🍪', nameKey: 'Custom Decorated Cookies', price: 36, desc: 'Personalized designs for any event', popular: true },
+];
+
+/* ---------- Cart State ---------- */
+let cart = JSON.parse(localStorage.getItem('gp_cart') || '[]');
+
+function saveCart() {
+  localStorage.setItem('gp_cart', JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((sum, i) => sum + i.qty, 0);
+  document.querySelectorAll('.cart-badge').forEach(el => {
+    el.textContent = total;
+    el.style.display = total > 0 ? 'flex' : 'none';
+  });
+}
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  const existing = cart.find(i => i.id === productId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: product.id, name: product.nameKey, price: product.price, emoji: product.emoji, qty: 1 });
+  }
+  saveCart();
+  renderCart();
+  showToast(`✓ ${product.nameKey} ${t('add_cart') || 'added to cart'}!`, 'success');
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(i => i.id !== productId);
+  saveCart();
+  renderCart();
+}
+
+function changeQty(productId, delta) {
+  const item = cart.find(i => i.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(productId);
+  else { saveCart(); renderCart(); }
+}
+
+function getCartTotal() {
+  return cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+}
+
+function renderCart() {
+  const itemsEl = document.querySelector('.cart-items');
+  const totalEl = document.querySelector('.cart-total-amount');
+  if (!itemsEl) return;
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--gray)">
+      <div style="font-size:3rem">🛒</div>
+      <p style="margin-top:1rem">Your cart is empty</p>
+    </div>`;
+  } else {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-icon">${item.emoji}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)} CAD</div>
+        </div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span style="min-width:20px;text-align:center;font-weight:600">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, +1)">+</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  if (totalEl) totalEl.textContent = `$${getCartTotal().toFixed(2)} CAD`;
+}
+
+/* ---------- Product Grid ---------- */
+function renderProducts(filter = 'all') {
+  const grid = document.getElementById('product-grid');
+  if (!grid) return;
+
+  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" data-id="${p.id}">
+      <div class="product-img">${p.emoji}</div>
+      <div class="product-info">
+        <div class="product-category">${getCatLabel(p.category)}</div>
+        <div class="product-name">${p.nameKey}${p.popular ? ' <span style="font-size:.65rem;background:var(--gold);color:var(--brown-dark);padding:2px 7px;border-radius:50px;vertical-align:middle;font-family:Montserrat,sans-serif;font-weight:700">★ POPULAR</span>' : ''}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">$${p.price.toFixed(2)} <span style="font-size:.75rem;font-weight:400;color:var(--gray)">CAD</span></div>
+          <button class="add-to-cart" onclick="addToCart(${p.id})" title="${t('add_cart') || 'Add to cart'}">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getCatLabel(cat) {
+  const map = { cakes: '🎂 Cakes', cupcakes: '🧁 Cupcakes', cookies: '🍪 Cookies' };
+  return map[cat] || cat;
+}
+
+/* ---------- Filter Tabs ---------- */
+function initFilterTabs() {
+  const tabs = document.querySelectorAll('.filter-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderProducts(tab.dataset.filter);
+    });
+  });
+}
+
+/* ---------- Navigation ---------- */
+function initNavbar() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger
+  const ham = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.nav-mobile');
+  const mobileOverlay = document.querySelector('.nav-overlay');
+  if (ham && mobileNav) {
+    ham.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      mobileOverlay?.classList.toggle('open');
+    });
+    mobileOverlay?.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+    });
+  }
+
+  // Active link based on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+    });
+  });
+}
+
+/* ---------- Cart Sidebar ---------- */
+function initCartSidebar() {
+  const cartIcons = document.querySelectorAll('.cart-icon');
+  const sidebar = document.querySelector('.cart-sidebar');
+  const overlay = document.querySelector('.cart-overlay');
+  const closeBtn = document.querySelector('.cart-close');
+
+  function openCart() {
+    sidebar?.classList.add('open');
+    overlay?.classList.add('open');
+    renderCart();
+  }
+  function closeCart() {
+    sidebar?.classList.remove('open');
+    overlay?.classList.remove('open');
+  }
+
+  cartIcons.forEach(icon => icon.addEventListener('click', openCart));
+  closeBtn?.addEventListener('click', closeCart);
+  overlay?.addEventListener('click', closeCart);
+}
+
+/* ---------- Order Form ---------- */
+function initOrderForm() {
+  const form = document.getElementById('order-form');
+  if (!form) return;
+
+  // Show/hide address field based on delivery selection
+  const typeRadios = form.querySelectorAll('input[name="order_type"]');
+  const addressGroup = form.querySelector('.address-group');
+  typeRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (addressGroup) {
+        addressGroup.style.display = radio.value === 'delivery' ? 'block' : 'none';
+      }
+    });
+  });
+
+  // Payment selection
+  form.querySelectorAll('.payment-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      form.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      opt.querySelector('input').checked = true;
+      showPaymentInstructions(opt.querySelector('input').value);
+    });
+  });
+
+  // Submit
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    const origText = btn.textContent;
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    await new Promise(r => setTimeout(r, 1500)); // Simulate processing
+
+    // In production, send to Netlify Forms / backend
+    btn.textContent = origText;
+    btn.disabled = false;
+    showToast('✓ ' + (t('order_success') || 'Order placed successfully!'), 'success');
+    form.reset();
+    cart = [];
+    saveCart();
+    renderCart();
+  });
+}
+
+function showPaymentInstructions(method) {
+  const infoBox = document.getElementById('payment-info');
+  if (!infoBox) return;
+
+  const instructions = {
+    interac: `<strong>Interac e-Transfer:</strong> Send payment to <em>gregpatisserie@email.com</em>. Include your name and order in the message. We will confirm your order upon receipt.`,
+    credit: `<strong>Credit Card:</strong> You will be redirected to our secure Stripe payment page after order confirmation.`,
+    debit: `<strong>Debit / Chequing:</strong> In-person debit accepted at pickup, or e-Transfer to our account. Details sent by email.`,
+    paypal: `<strong>PayPal:</strong> A PayPal payment request will be sent to your email. Complete payment to confirm your order.`,
+    cash: `<strong>Cash on Pickup:</strong> Pay when you collect your order at our location in Laval, QC.`,
+  };
+
+  infoBox.innerHTML = instructions[method] || '';
+  infoBox.style.display = instructions[method] ? 'block' : 'none';
+}
+
+/* ---------- Newsletter Form ---------- */
+function initPromoForm() {
+  const form = document.querySelector('.promo-form');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = form.querySelector('input[type="email"]')?.value;
+    if (!email) return;
+    showToast(`✓ Subscribed! Welcome to Greg Patisserie.`, 'success');
+    form.reset();
+  });
+}
+
+/* ---------- Toast ---------- */
+function showToast(msg, type = 'info') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 4000);
+}
+
+/* ---------- Smooth Scroll ---------- */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+}
+
+/* ---------- PWA Install Banner ---------- */
+let deferredInstall;
+function initPWA() {
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredInstall = e;
+    const banner = document.querySelector('.install-banner');
+    if (banner) setTimeout(() => banner.classList.add('show'), 3000);
+  });
+
+  const installBtn = document.querySelector('.install-btn');
+  const dismissBtn = document.querySelector('.install-dismiss');
+  const banner = document.querySelector('.install-banner');
+
+  installBtn?.addEventListener('click', () => {
+    deferredInstall?.prompt();
+    banner?.classList.remove('show');
+  });
+  dismissBtn?.addEventListener('click', () => banner?.classList.remove('show'));
+}
+
+/* ---------- Animations on scroll ---------- */
+function initScrollAnimations() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .catering-card, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+}
+
+/* ---------- Init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initCartSidebar();
+  initFilterTabs();
+  renderProducts();
+  initOrderForm();
+  initPromoForm();
+  initSmoothScroll();
+  initPWA();
+  updateCartBadge();
+  setTimeout(initScrollAnimations, 200);
+});

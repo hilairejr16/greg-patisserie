@@ -1,0 +1,40 @@
+{
+  "name": "Greg Patisserie",
+  "short_name": "Greg Patisserie",
+  "description": "Artisan pastries, custom cakes, cupcakes and cookies in Laval, QC. Order online.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2C1810",
+  "theme_color": "#2C1810",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "images/logo-social.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["food", "shopping"],
+  "shortcuts": [
+    {
+      "name": "Order Now",
+      "short_name": "Order",
+      "description": "Place a new order",
+      "url": "/#order",
+      "icons": [{ "src": "images/logo-social.svg", "sizes": "any" }]
+    },
+    {
+      "name": "View Menu",
+      "short_name": "Menu",
+      "description": "Browse our menu",
+      "url": "/#menu",
+      "icons": [{ "src": "images/logo-social.svg", "sizes": "any" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

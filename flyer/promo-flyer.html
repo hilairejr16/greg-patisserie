@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greg Patisserie – Flyer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #e8ddd4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      padding: 2rem;
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: white; padding: 0; }
+      .no-print { display: none !important; }
+      .flyer { box-shadow: none !important; }
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #2C1810;
+      color: #FFF8DC;
+      border: none;
+      padding: .7rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      cursor: pointer;
+      z-index: 100;
+    }
+    .print-btn:hover { background: #D4AF37; color: #2C1810; }
+
+    /* ── FLYER ── */
+    .flyer {
+      width: 8.5in;
+      min-height: 11in;
+      background: #1a0f0a;
+      border-radius: 4px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top decorative band */
+    .flyer-header {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8860B 40%, #D4AF37 100%);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .flyer-header::before,
+    .flyer-header::after {
+      content: '✦ ✦ ✦';
+      display: block;
+      color: rgba(44,24,16,0.4);
+      font-size: .7rem;
+      letter-spacing: .8em;
+    }
+    .flyer-header-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: #2C1810;
+      margin: .3rem 0;
+    }
+
+    /* Logo area */
+    .flyer-logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 2rem 1.5rem;
+      background: linear-gradient(180deg, #2C1810 0%, #1a0f0a 100%);
+      position: relative;
+    }
+    .flyer-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(212,175,55,0.15) 0%, transparent 60%);
+    }
+    .flyer-logo-svg {
+      width: 320px;
+      position: relative;
+      z-index: 1;
+    }
+    .flyer-tagline {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,248,220,0.8);
+      margin-top: .5rem;
+      letter-spacing: .05em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Divider ornament */
+    .ornament {
+      text-align: center;
+      color: #D4AF37;
+      font-size: 1.2rem;
+      letter-spacing: 1rem;
+      padding: 0.8rem 0;
+      opacity: 0.6;
+    }
+
+    /* Promo banner */
+    .promo-banner {
+      background: linear-gradient(135deg, #D4AF37, #B8860B);
+      margin: 0 2rem;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .promo-banner-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: #2C1810;
+      opacity: .7;
+    }
+    .promo-banner-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2C1810;
+      line-height: 1;
+      margin: .3rem 0;
+    }
+    .promo-banner-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #2C1810;
+      opacity: .8;
+    }
+
+    /* Services grid */
+    .services-section {
+      padding: 2rem;
+      flex: 1;
+    }
+    .services-title {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      margin-bottom: 1.2rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .service-card {
+      background: rgba(212,175,55,0.07);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .service-icon { font-size: 2rem; margin-bottom: .5rem; }
+    .service-name {
+      color: #FFF8DC;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .service-desc {
+      color: rgba(255,248,220,.55);
+      font-size: .78rem;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.4;
+    }
+
+    /* Events row */
+    .events-row {
+      display: flex;
+      justify-content: center;
+      gap: .8rem;
+      flex-wrap: wrap;
+      padding: 0 2rem 1.5rem;
+    }
+    .event-chip {
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.25);
+      color: rgba(255,248,220,.8);
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      font-size: .78rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    /* Bottom CTA + QR */
+    .flyer-cta {
+      background: linear-gradient(135deg, #2C1810, #1a0f0a);
+      border-top: 1px solid rgba(212,175,55,0.2);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .qr-section { text-align: center; flex-shrink: 0; }
+    #qrcode {
+      background: white;
+      padding: 8px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    #qrcode canvas, #qrcode img { display: block; }
+    .qr-label {
+      color: rgba(255,248,220,.6);
+      font-family: 'Montserrat', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-top: .5rem;
+    }
+
+    .cta-info { flex: 1; }
+    .cta-title {
+      color: #D4AF37;
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: .8rem;
+    }
+    .cta-item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: rgba(255,248,220,.8);
+      font-size: .88rem;
+      margin-bottom: .5rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .cta-item-icon { color: #D4AF37; font-size: 1rem; width: 18px; text-align: center; }
+
+    .payment-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .8rem;
+    }
+    .pay-chip {
+      background: rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.3);
+      color: rgba(255,248,220,.75);
+      font-family: 'Montserrat', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      padding: .25rem .6rem;
+      border-radius: 50px;
+      letter-spacing: .05em;
+    }
+
+    /* Footer band */
+    .flyer-footer {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+      padding: .8rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .flyer-footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: #2C1810;
+    }
+    .flyer-footer-social {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      color: #2C1810;
+      letter-spacing: .1em;
+    }
+    .flyer-footer-loc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      color: #2C1810;
+    }
+
+    /* Multilingual splash */
+    .lang-strip {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: .7rem 2rem;
+      background: rgba(212,175,55,0.05);
+      border-top: 1px solid rgba(212,175,55,0.1);
+    }
+    .lang-item {
+      text-align: center;
+      color: rgba(255,248,220,.6);
+      font-size: .78rem;
+    }
+    .lang-item strong { color: #D4AF37; display: block; font-size: .65rem; font-family: 'Montserrat',sans-serif; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .1rem; }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨 Print Flyer</button>
+
+<div class="flyer">
+
+  <!-- Header Band -->
+  <div class="flyer-header">
+    <div class="flyer-header-text">Artisan Pastries · Pâtisseries Artisanales · Patissri Atizan · Pasteles Artesanales</div>
+  </div>
+
+  <!-- Logo -->
+  <div class="flyer-logo-wrap">
+    <!-- Inline SVG logo for print reliability -->
+    <svg class="flyer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+      <defs>
+        <linearGradient id="fgold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#D4AF37"/>
+          <stop offset="100%" style="stop-color:#B8860B"/>
+        </linearGradient>
+        <filter id="fglow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Cake icon -->
+      <rect x="212" y="118" width="76" height="27" rx="5" fill="#8B4513" opacity="0.8"/>
+      <rect x="222" y="95" width="56" height="25" rx="4" fill="#6B3410" opacity="0.9"/>
+      <rect x="233" y="75" width="34" height="22" rx="4" fill="#5C2D0E"/>
+      <path d="M200 79 Q203 72 206 79 Q209 72 212 79 Q215 72 218 79 Q221 72 224 79 Q227 72 230 79 Q233 72 236 79 Q239 72 242 79 Q245 72 248 79 Q251 72 254 79 Q257 72 260 79 Q263 72 266 79 Q269 72 272 79 Q275 72 278 79 Q281 72 284 79 Q287 72 290 79 Q293 72 296 79 Q299 72 300 79"
+            stroke="#FFF8DC" stroke-width="2.5" fill="none" opacity="0.9"/>
+      <rect x="241" y="62" width="5" height="14" rx="2" fill="#E91E8C"/>
+      <rect x="251" y="60" width="5" height="16" rx="2" fill="#FFD700"/>
+      <rect x="261" y="62" width="5" height="14" rx="2" fill="#E91E8C"/>
+      <ellipse cx="243.5" cy="59" rx="2.5" ry="4" fill="#FFD700" filter="url(#fglow)" opacity="0.95"/>
+      <ellipse cx="253.5" cy="57" rx="2.5" ry="4" fill="#FF6B35" filter="url(#fglow)" opacity="0.95"/>
+      <ellipse cx="263.5" cy="59" rx="2.5" ry="4" fill="#FFD700" filter="url(#fglow)" opacity="0.95"/>
+      <!-- Brand Name -->
+      <text x="250" y="150" font-family="Georgia, serif" font-size="46" font-weight="700" font-style="italic" letter-spacing="3" fill="url(#fgold)" text-anchor="middle" filter="url(#fglow)">Greg</text>
+      <text x="250" y="170" font-family="Georgia, serif" font-size="16" letter-spacing="9" fill="#FFF8DC" text-anchor="middle" opacity="0.9">PATISSERIE</text>
+      <line x1="80" y1="182" x2="420" y2="182" stroke="url(#fgold)" stroke-width="0.8" opacity="0.4"/>
+      <text x="250" y="195" font-family="Georgia, serif" font-size="9" letter-spacing="4" fill="#D4AF37" text-anchor="middle" opacity="0.7">LAVAL · QUÉBEC · CANADA</text>
+    </svg>
+    <p class="flyer-tagline">Crafted with Love · Fait avec Amour · Fèt ak Renmen</p>
+  </div>
+
+  <!-- Ornament -->
+  <div class="ornament" style="background:#1a0f0a">✦ ✦ ✦</div>
+
+  <!-- Promo Banner -->
+  <div style="background:#1a0f0a;padding: 0 0 1.5rem">
+    <div class="promo-banner">
+      <div class="promo-banner-eyebrow">Offre Spéciale · Special Offer</div>
+      <div class="promo-banner-title">10% OFF<br><span style="font-size:1.4rem">Your First Order</span></div>
+      <div class="promo-banner-sub">Scan the QR code to order online · Commander en ligne</div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="services-section">
+    <div class="services-title">Our Creations · Nos Créations · Krerasyon Nou</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎂</div>
+        <div class="service-name">Cakes / Gâteaux</div>
+        <div class="service-desc">Custom designs for every occasion. À partir de $45</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧁</div>
+        <div class="service-name">Cupcakes</div>
+        <div class="service-desc">Flavors for all tastes. Douzaine / Dozen $28+</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍪</div>
+        <div class="service-name">Cookies / Biscuits</div>
+        <div class="service-desc">Decorated & classic. Douzaine / Dozen $18+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events chips -->
+  <div class="events-row">
+    <span class="event-chip">🎂 Anniversaires / Birthdays</span>
+    <span class="event-chip">💍 Mariages / Weddings</span>
+    <span class="event-chip">👶 Baby Showers</span>
+    <span class="event-chip">💒 Fiançailles / Engagements</span>
+    <span class="event-chip">🎉 Événements sur mesure</span>
+  </div>
+
+  <!-- Lang strip -->
+  <div class="lang-strip">
+    <div class="lang-item"><strong>Français</strong>Commandez en ligne</div>
+    <div class="lang-item"><strong>English</strong>Order online</div>
+    <div class="lang-item"><strong>Kreyòl</strong>Kòmande sou entènèt</div>
+    <div class="lang-item"><strong>Español</strong>Ordene en línea</div>
+  </div>
+
+  <!-- CTA + QR -->
+  <div class="flyer-cta">
+    <div class="qr-section">
+      <div id="qrcode"></div>
+      <div class="qr-label">Scan to Order</div>
+    </div>
+
+    <div class="cta-info">
+      <div class="cta-title">Order Online / Commander</div>
+      <div class="cta-item">
+        <span class="cta-item-icon">🌐</span>
+        <span>gregpatisserie.ca</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-icon">📱</span>
+        <span>(514) 123-4567</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-icon">✉️</span>
+        <span>info@gregpatisserie.ca</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-icon">📍</span>
+        <span>Laval, Québec, Canada</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-icon">📸</span>
+        <span>@gregory1824</span>
+      </div>
+      <div class="payment-chips">
+        <span class="pay-chip">🏦 Interac</span>
+        <span class="pay-chip">💳 Credit Card</span>
+        <span class="pay-chip">🅿 PayPal</span>
+        <span class="pay-chip">🏧 Debit</span>
+        <span class="pay-chip">💵 Cash</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="flyer-footer">
+    <div class="flyer-footer-brand">Greg Patisserie</div>
+    <div class="flyer-footer-social">📘📸🐦 @gregory1824</div>
+    <div class="flyer-footer-loc">🇨🇦 Laval, QC, Canada</div>
+  </div>
+
+</div>
+
+<script>
+  // Generate QR code linking to the website
+  document.addEventListener('DOMContentLoaded', () => {
+    new QRCode(document.getElementById('qrcode'), {
+      text: 'https://gregpatisserie.ca',
+      width: 120,
+      height: 120,
+      colorDark: '#2C1810',
+      colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  });
+</script>
+</body>
+</html>

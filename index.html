@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greg Patisserie – Artisan pastries, custom cakes, cupcakes and cookies in Laval, QC. Online ordering available. Serving the Canadian and Haitian communities.">
+  <meta name="keywords" content="patisserie, cake, cupcake, cookies, Laval, Quebec, Haitian, artisan, custom cake, traiteur, gregory1824">
+  <meta name="author" content="Gregory Olivier">
+  <meta name="theme-color" content="#2C1810">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Greg Patisserie – Laval, QC">
+  <meta property="og:description" content="Artisan pastries crafted with love. Custom cakes, cupcakes & cookies for every occasion.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/logo-social.svg">
+  <meta property="og:locale" content="fr_CA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@gregory1824">
+  <meta name="twitter:title" content="Greg Patisserie – Laval, QC">
+  <meta name="twitter:image" content="images/logo-social.svg">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="images/logo-social.svg">
+
+  <title>Greg Patisserie – Laval, QC | Artisan Cakes & Pastries</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ========================================================
+     NAVIGATION
+     ======================================================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#hero" class="nav-logo">
+      <img src="images/logo-main.svg" alt="Greg Patisserie">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#hero"      data-i18n="nav_home">Accueil</a></li>
+      <li><a href="#menu"      data-i18n="nav_menu">Notre Carte</a></li>
+      <li><a href="#order"     data-i18n="nav_order">Commander</a></li>
+      <li><a href="#catering"  data-i18n="nav_catering">Traiteur</a></li>
+      <li><a href="#about"     data-i18n="nav_about">À propos</a></li>
+      <li><a href="#contact"   data-i18n="nav_contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <!-- Language switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ht">HT</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+
+      <!-- Cart -->
+      <a href="#" class="cart-icon" title="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-badge" style="display:none">0</span>
+      </a>
+
+      <!-- Hamburger -->
+      <div class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="nav-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1400;display:none"></div>
+<nav class="nav-mobile">
+  <a href="#hero"     data-i18n="nav_home"     onclick="this.closest('.nav-mobile').classList.remove('open')">Accueil</a>
+  <a href="#menu"     data-i18n="nav_menu"     onclick="this.closest('.nav-mobile').classList.remove('open')">Notre Carte</a>
+  <a href="#order"    data-i18n="nav_order"    onclick="this.closest('.nav-mobile').classList.remove('open')">Commander</a>
+  <a href="#catering" data-i18n="nav_catering" onclick="this.closest('.nav-mobile').classList.remove('open')">Traiteur</a>
+  <a href="#about"    data-i18n="nav_about"    onclick="this.closest('.nav-mobile').classList.remove('open')">À propos</a>
+  <a href="#contact"  data-i18n="nav_contact"  onclick="this.closest('.nav-mobile').classList.remove('open')">Contact</a>
+  <div style="margin-top:2rem;display:flex;gap:8px">
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ht">HT</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
+</nav>
+
+<!-- ========================================================
+     HERO
+     ======================================================== -->
+<section class="hero" id="hero">
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i>
+        <span data-i18n="hero_badge">Boulangerie Artisanale · Laval, QC</span>
+      </div>
+      <h1 data-i18n="hero_title">Des <span>Pâtisseries</span> Exceptionnelles Faites avec Amour</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Gâteaux sur mesure, cupcakes et biscuits pour toutes les occasions. Au service des communautés canadienne et haïtienne.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn btn-primary" data-i18n="hero_cta1"><i class="fas fa-shopping-bag"></i> Commander</a>
+        <a href="#menu"  class="btn btn-outline" data-i18n="hero_cta2"><i class="fas fa-utensils"></i> Voir la carte</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label" data-i18n="hero_stat1">Clients Satisfaits</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label" data-i18n="hero_stat2">Recettes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label" data-i18n="hero_stat3">Ans d'Expertise</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/logo-main.svg" alt="Greg Patisserie" class="hero-logo-display">
+    </div>
+  </div>
+</section>
+
+<!-- Social Media Bar -->
+<div class="social-bar">
+  <div class="container">
+    <a href="https://www.facebook.com/gregory1824" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+    <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-instagram"></i> Instagram @gregory1824
+    </a>
+    <a href="https://www.twitter.com/gregory1824" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-twitter"></i> Twitter
+    </a>
+    <a href="https://www.google.com/maps/search/Greg+Patisserie+Laval+QC" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-google"></i> Google
+    </a>
+    <a href="https://wa.me/15141234567" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ========================================================
+     MENU / PRODUCTS
+     ======================================================== -->
+<section class="section bg-linen" id="menu">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label" data-i18n="featured_label">Nos Spécialités</span>
+      <h2 class="section-title" data-i18n="featured_title">Fait à la Main avec Passion</h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p style="max-width:600px;margin:0 auto 2.5rem;color:var(--text-mid)" data-i18n="featured_sub">Chaque création est faite sur commande avec des ingrédients premium</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div style="display:flex;justify-content:center;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap">
+      <button class="filter-tab btn btn-primary active" data-filter="all" data-i18n="all">Tous</button>
+      <button class="filter-tab btn btn-dark" data-filter="cakes" data-i18n="cat_cakes">Gâteaux</button>
+      <button class="filter-tab btn btn-dark" data-filter="cupcakes" data-i18n="cat_cupcakes">Cupcakes</button>
+      <button class="filter-tab btn btn-dark" data-filter="cookies" data-i18n="cat_cookies">Biscuits</button>
+    </div>
+
+    <div id="product-grid" class="product-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     ORDER ONLINE
+     ======================================================== -->
+<section class="section" id="order" style="background:linear-gradient(135deg,#f5ede3,#faf0e6)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label" data-i18n="nav_order">Commander en ligne</span>
+      <h2 data-i18n="order_title">Passer une Commande</h2>
+      <div class="section-divider"><span>✦</span></div>
+    </div>
+
+    <div class="order-form-wrap">
+      <form id="order-form" name="order" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="order">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name" data-i18n="order_name">Nom complet</label>
+            <input type="text" id="name" name="name" class="form-input" required
+                   data-i18n-placeholder="order_name" placeholder="Nom complet">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email" data-i18n="order_email">Courriel</label>
+            <input type="email" id="email" name="email" class="form-input" required
+                   data-i18n-placeholder="order_email" placeholder="Courriel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="phone" data-i18n="order_phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone" class="form-input"
+                   placeholder="(514) 000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="product" data-i18n="order_product">Produit</label>
+            <select id="product" name="product" class="form-select" required>
+              <option value="">— Sélectionner —</option>
+              <optgroup label="🎂 Gâteaux / Cakes">
+                <option>Classic Birthday Cake – $45</option>
+                <option>Chocolate Dream Cake – $55</option>
+                <option>Caribbean Coconut Cake – $50</option>
+                <option>Red Velvet Cake – $52</option>
+                <option>Wedding Tiered Cake – $150+</option>
+                <option>Mango Passion Cake – $48</option>
+              </optgroup>
+              <optgroup label="🧁 Cupcakes (douzaine / dozen)">
+                <option>Vanilla Cupcakes – $28/dz</option>
+                <option>Chocolate Cupcakes – $30/dz</option>
+                <option>Strawberry Cupcakes – $30/dz</option>
+                <option>Lemon Cupcakes – $28/dz</option>
+                <option>Red Velvet Cupcakes – $32/dz</option>
+                <option>Coconut Cupcakes – $30/dz</option>
+              </optgroup>
+              <optgroup label="🍪 Biscuits / Cookies (douzaine / dozen)">
+                <option>Chocolate Chip Cookies – $18/dz</option>
+                <option>Sugar Cookies (decorated) – $20/dz</option>
+                <option>Snickerdoodle – $18/dz</option>
+                <option>Peanut Butter Cookies – $20/dz</option>
+                <option>Shortbread – $22/dz</option>
+                <option>Custom Decorated Cookies – $36/dz</option>
+              </optgroup>
+              <optgroup label="🎉 Traiteur / Catering">
+                <option>Catering Package – Birthday Party</option>
+                <option>Catering Package – Wedding Reception</option>
+                <option>Catering Package – Baby Shower</option>
+                <option>Catering Package – Engagement / Fiançailles</option>
+                <option>Custom Corporate Package</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="qty" data-i18n="order_qty">Quantité</label>
+            <input type="number" id="qty" name="quantity" class="form-input" min="1" value="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="date" data-i18n="order_date">Date souhaitée</label>
+            <input type="date" id="date" name="date" class="form-input" required>
+          </div>
+        </div>
+
+        <!-- Order Type -->
+        <div class="form-group">
+          <label class="form-label" data-i18n="order_type">Type de commande</label>
+          <div style="display:flex;gap:1rem;margin-top:0.5rem">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.95rem">
+              <input type="radio" name="order_type" value="pickup" checked> <span data-i18n="order_pickup">Cueillette</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.95rem">
+              <input type="radio" name="order_type" value="delivery"> <span data-i18n="order_delivery">Livraison</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group address-group" style="display:none">
+          <label class="form-label" data-i18n="order_address">Adresse de livraison</label>
+          <input type="text" name="address" class="form-input" placeholder="123 Rue Exemple, Laval, QC">
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-group">
+          <label class="form-label" data-i18n="order_payment">Mode de paiement</label>
+          <div class="payment-methods">
+            <label class="payment-option selected">
+              <input type="radio" name="payment" value="interac" checked>
+              <span class="payment-logo">🏦</span>
+              <span class="payment-name" data-i18n="pay_interac">Interac</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="credit">
+              <span class="payment-logo">💳</span>
+              <span class="payment-name" data-i18n="pay_credit">Carte de crédit</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="debit">
+              <span class="payment-logo">🏧</span>
+              <span class="payment-name" data-i18n="pay_debit">Débit</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="paypal">
+              <span class="payment-logo">🅿</span>
+              <span class="payment-name" data-i18n="pay_paypal">PayPal</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cash">
+              <span class="payment-logo">💵</span>
+              <span class="payment-name" data-i18n="pay_cash">Comptant</span>
+            </label>
+          </div>
+
+          <div id="payment-info" style="display:none;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:8px;padding:1rem;margin-top:0.8rem;font-size:.9rem;color:var(--text-mid)">
+            <!-- Payment instructions injected by JS -->
+          </div>
+        </div>
+
+        <!-- Special Notes -->
+        <div class="form-group">
+          <label class="form-label" for="notes" data-i18n="order_notes">Instructions spéciales</label>
+          <textarea id="notes" name="notes" class="form-textarea"
+                    placeholder="Allergies, design requests, message on cake..."></textarea>
+        </div>
+
+        <!-- Cart Summary -->
+        <div id="cart-summary" style="background:var(--linen);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
+          <strong style="font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brown-mid)">Order Summary</strong>
+          <div id="cart-summary-items" style="margin-top:.5rem;font-size:.9rem;color:var(--text-mid)">Items added from the menu will appear here.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem 2rem;font-size:.95rem">
+          <i class="fas fa-check-circle"></i> <span data-i18n="order_submit">Confirmer la commande</span>
+        </button>
+
+        <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--gray)">
+          <i class="fas fa-lock"></i> Secure order • Confirmation by email within 24h
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     CATERING / TRAITEUR
+     ======================================================== -->
+<section class="section bg-dark" id="catering">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label" data-i18n="catering_label">Événements Privés</span>
+      <h2 style="color:var(--cream)" data-i18n="catering_title">Services Traiteur</h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p style="max-width:600px;margin:0 auto;color:rgba(255,248,220,.75)" data-i18n="catering_sub">Nous apportons la douceur à vos moments les plus spéciaux</p>
+    </div>
+
+    <div class="catering-grid">
+      <div class="catering-card">
+        <div class="catering-icon">🎂</div>
+        <h3 data-i18n="ev_birthday">Fêtes d'Anniversaire</h3>
+        <p>Custom cakes, cupcake towers, cookie platters</p>
+      </div>
+      <div class="catering-card">
+        <div class="catering-icon">💍</div>
+        <h3 data-i18n="ev_wedding">Réceptions de Mariage</h3>
+        <p>Multi-tier wedding cakes, dessert tables, petit fours</p>
+      </div>
+      <div class="catering-card">
+        <div class="catering-icon">👶</div>
+        <h3 data-i18n="ev_baby">Baby Showers</h3>
+        <p>Themed cakes, gender reveal cakes, cupcake displays</p>
+      </div>
+      <div class="catering-card">
+        <div class="catering-icon">💒</div>
+        <h3 data-i18n="ev_fiancee">Fiançailles</h3>
+        <p>Elegant engagement cakes, macaron towers</p>
+      </div>
+      <div class="catering-card">
+        <div class="catering-icon">🏢</div>
+        <h3 data-i18n="ev_corporate">Événements Corporatifs</h3>
+        <p>Branded cakes, large-scale dessert service</p>
+      </div>
+      <div class="catering-card">
+        <div class="catering-icon">🎉</div>
+        <h3 data-i18n="ev_custom">Événements Personnalisés</h3>
+        <p>Graduations, holiday parties, cultural events</p>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:3rem">
+      <a href="#order" class="btn btn-primary">
+        <i class="fas fa-calendar-alt"></i>
+        <span data-i18n="order_now">Réserver</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     ABOUT
+     ======================================================== -->
+<section class="section" id="about" style="background:var(--cream)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <div>
+        <span class="section-label">Notre Histoire</span>
+        <h2>Greg Patisserie</h2>
+        <div class="section-divider"><span>✦</span></div>
+        <p style="margin-bottom:1rem;color:var(--text-mid)">
+          Founded by <strong>Gregory Olivier</strong> in Laval, Québec, Greg Patisserie was born from a passion for artisan baking and a desire to share the rich flavors of Caribbean and French-Canadian traditions.
+        </p>
+        <p style="margin-bottom:1rem;color:var(--text-mid)">
+          Every creation is handcrafted with premium ingredients, honoring both the Haitian community's vibrant culture and the Quebec tradition of fine pastry-making.
+        </p>
+        <p style="color:var(--text-mid)">
+          From intimate birthday cakes to grand wedding receptions, Greg Patisserie brings sweetness to life's most important moments.
+        </p>
+        <div style="margin-top:2rem;display:flex;gap:1rem">
+          <a href="#order" class="btn btn-primary" data-i18n="order_now">Commander</a>
+          <a href="#contact" class="btn btn-dark" data-i18n="nav_contact">Contact</a>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <img src="images/logo-main.svg" alt="Greg Patisserie" style="max-width:300px;margin:0 auto;filter:drop-shadow(0 10px 40px rgba(44,24,16,0.2))">
+        <div style="margin-top:2rem;background:var(--linen);border-radius:12px;padding:1.5rem;box-shadow:0 4px 20px rgba(44,24,16,.1)">
+          <p style="font-style:italic;font-size:1.1rem;color:var(--brown-mid)">
+            "Chaque gâteau est une œuvre d'art faite avec amour."
+          </p>
+          <p style="font-size:.85rem;color:var(--gray);margin-top:.5rem;font-family:'Montserrat',sans-serif;font-weight:600">
+            — Gregory Olivier, Propriétaire
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     TESTIMONIALS
+     ======================================================== -->
+<section class="section bg-linen" id="testimonials">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label" data-i18n="testimonials_label">Avis</span>
+      <h2 data-i18n="testimonials_title">Nos Clients Nous Adorent</h2>
+      <div class="section-divider"><span>✦</span></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Le gâteau de mariage était absolument magnifique et délicieux. Greg a su capturer exactement notre vision. Merci infiniment!"</p>
+        <div class="testimonial-author">Marie-Claire D.</div>
+        <div class="testimonial-location">Laval, QC</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The Caribbean Coconut Cake reminded me of home in Haiti. So authentic and made with so much love. Will order again!"</p>
+        <div class="testimonial-author">Jean-Paul M.</div>
+        <div class="testimonial-location">Montreal, QC</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Les cupcakes pour le baby shower de ma fille étaient parfaits! Tout le monde a adoré. Service exceptionnel et livraison à temps."</p>
+        <div class="testimonial-author">Sandra T.</div>
+        <div class="testimonial-location">Laval, QC</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"¡Las galletas decoradas para el cumpleaños de mi hija quedaron increíbles! Muy profesional y delicioso. Los recomiendo 100%."</p>
+        <div class="testimonial-author">Rosa V.</div>
+        <div class="testimonial-location">Laval, QC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PROMO / NEWSLETTER
+     ======================================================== -->
+<section class="promo-section" id="subscribe">
+  <div class="container">
+    <span class="section-label" data-i18n="promo_label">Restez Connecté</span>
+    <h2 data-i18n="promo_title">Recevez des <span>Offres Exclusives</span></h2>
+    <p class="promo-sub" data-i18n="promo_sub">Abonnez-vous pour recevoir des promotions, des spéciaux saisonniers et nos nouvelles créations.</p>
+
+    <form class="promo-form" name="newsletter" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" required
+             data-i18n-placeholder="promo_placeholder"
+             placeholder="Votre adresse courriel">
+      <button type="submit" data-i18n="promo_btn">S'abonner</button>
+    </form>
+
+    <p style="font-size:.8rem;opacity:.6;margin-bottom:1rem" data-i18n="promo_or">Suivez-nous aussi sur</p>
+    <div class="promo-channels">
+      <a href="https://www.facebook.com/gregory1824" target="_blank" rel="noopener">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.twitter.com/gregory1824" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i> Twitter
+      </a>
+      <a href="https://wa.me/15141234567" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     CONTACT
+     ======================================================== -->
+<section class="section bg-linen" id="contact">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label" data-i18n="contact_title">Nous Trouver</span>
+      <h2>Contact</h2>
+      <div class="section-divider"><span>✦</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+      <div>
+        <div style="background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 4px 20px rgba(44,24,16,.1)">
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Greg Patisserie</strong><br>
+              Laval, Québec, Canada
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <div><a href="tel:+15141234567" style="color:var(--text-mid)">(514) 123-4567</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <div><a href="mailto:info@gregpatisserie.ca" style="color:var(--text-mid)">info@gregpatisserie.ca</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              Lun–Sam: 8h00 – 19h00<br>
+              Dim: 9h00 – 16h00
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #e0d5cc">
+            <p style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--brown-mid);margin-bottom:1rem">Follow Us</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+              <a href="https://www.facebook.com/gregory1824" target="_blank" rel="noopener" class="btn btn-dark" style="padding:.6rem 1.2rem;font-size:.78rem">
+                <i class="fab fa-facebook"></i> Facebook
+              </a>
+              <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" class="btn btn-dark" style="padding:.6rem 1.2rem;font-size:.78rem">
+                <i class="fab fa-instagram"></i> Instagram
+              </a>
+              <a href="https://www.twitter.com/gregory1824" target="_blank" rel="noopener" class="btn btn-dark" style="padding:.6rem 1.2rem;font-size:.78rem">
+                <i class="fab fa-twitter"></i> Twitter
+              </a>
+              <a href="https://wa.me/15141234567" target="_blank" rel="noopener" class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.78rem">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <form name="contact" method="POST" data-netlify="true" style="background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 4px 20px rgba(44,24,16,.1)">
+          <input type="hidden" name="form-name" value="contact">
+          <h3 style="margin-bottom:1.5rem;font-size:1.3rem">Send a Message</h3>
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="Your email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-textarea" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="images/logo-main.svg" alt="Greg Patisserie" class="footer-logo">
+        <p class="footer-about" data-i18n="footer_tagline">Pâtisseries artisanales faites avec amour à Laval, QC.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/gregory1824" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.twitter.com/gregory1824" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/15141234567" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.google.com/maps/search/Greg+Patisserie+Laval+QC" target="_blank" rel="noopener" title="Google"><i class="fab fa-google"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_links">Liens Rapides</h4>
+        <ul>
+          <li><a href="#hero"     data-i18n="nav_home">Accueil</a></li>
+          <li><a href="#menu"     data-i18n="nav_menu">Notre Carte</a></li>
+          <li><a href="#order"    data-i18n="nav_order">Commander</a></li>
+          <li><a href="#catering" data-i18n="nav_catering">Traiteur</a></li>
+          <li><a href="#about"    data-i18n="nav_about">À propos</a></li>
+          <li><a href="#contact"  data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_services">Services</h4>
+        <ul>
+          <li><a href="#menu" data-i18n="cat_cakes">Gâteaux</a></li>
+          <li><a href="#menu" data-i18n="cat_cupcakes">Cupcakes</a></li>
+          <li><a href="#menu" data-i18n="cat_cookies">Biscuits</a></li>
+          <li><a href="#catering" data-i18n="ev_birthday">Fêtes</a></li>
+          <li><a href="#catering" data-i18n="ev_wedding">Mariages</a></li>
+          <li><a href="#catering" data-i18n="ev_baby">Baby Showers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact">Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Laval, Québec, Canada</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+15141234567" style="color:rgba(255,248,220,.75)">(514) 123-4567</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info@gregpatisserie.ca" style="color:rgba(255,248,220,.75)">info@gregpatisserie.ca</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Lun–Sam: 8h–19h | Dim: 9h–16h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer_rights">© 2025 Greg Patisserie. Tous droits réservés.</span>
+      <span data-i18n="footer_owner">Gregory Olivier, Propriétaire</span>
+      <span>Laval, QC, Canada 🇨🇦</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================================
+     CART SIDEBAR
+     ======================================================== -->
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-bag"></i> Mon Panier</h3>
+    <button class="cart-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items">
+    <!-- Rendered by JS -->
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span class="cart-total-amount">$0.00 CAD</span>
+    </div>
+    <a href="#order" class="btn btn-primary" style="width:100%;justify-content:center" onclick="document.querySelector('.cart-overlay').classList.remove('open');document.querySelector('.cart-sidebar').classList.remove('open')">
+      <i class="fas fa-credit-card"></i> Commander
+    </a>
+    <p style="font-size:.75rem;text-align:center;margin-top:.75rem;color:var(--gray)">
+      <i class="fas fa-lock"></i> Secure checkout · Confirmation par email
+    </p>
+  </div>
+</div>
+
+<!-- ========================================================
+     PWA INSTALL BANNER
+     ======================================================== -->
+<div class="install-banner">
+  <img src="images/logo-social.svg" alt="" style="height:36px;width:36px;border-radius:8px">
+  <p><strong>Greg Patisserie</strong> — Add to your home screen for quick access!</p>
+  <button class="btn btn-primary install-btn" style="white-space:nowrap;padding:.5rem 1.2rem;font-size:.78rem">Install App</button>
+  <button class="install-dismiss"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container"></div>
+
+<!-- Scripts -->
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Additional inline init
+  document.addEventListener('DOMContentLoaded', () => {
+    // Filter tab styling
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => {
+          t.className = 'filter-tab btn btn-dark';
+        });
+        tab.className = 'filter-tab btn btn-primary active';
+      });
+    });
+
+    // Mobile nav overlay visibility
+    const overlay = document.querySelector('.nav-overlay');
+    const ham = document.querySelector('.hamburger');
+    if (overlay && ham) {
+      overlay.style.display = 'none';
+      ham.addEventListener('click', () => {
+        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+      });
+      overlay.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        document.querySelector('.nav-mobile')?.classList.remove('open');
+      });
+    }
+
+    // Set min date for order form
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 2);
+      dateInput.min = tomorrow.toISOString().split('T')[0];
+    }
+
+    // Init payment info display
+    showPaymentInstructions('interac');
+  });
+</script>
+
+<!-- Service Worker for PWA -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>

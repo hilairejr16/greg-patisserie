@@ -1,0 +1,91 @@
+<!-- Square logo optimized for Instagram / Facebook / Twitter profile picture (1:1 ratio) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C1810"/>
+      <stop offset="100%" style="stop-color:#1a0f0a"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="250" cy="250" r="248" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="250" r="245" fill="none" stroke="url(#goldGrad)" stroke-width="3" opacity="0.8"/>
+  <circle cx="250" cy="250" r="230" fill="none" stroke="url(#goldGrad)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Top ornament -->
+  <line x1="100" y1="115" x2="210" y2="115" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="250" cy="115" r="5" fill="url(#goldGrad)" filter="url(#glow)"/>
+  <line x1="290" y1="115" x2="400" y2="115" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Large Cake -->
+  <!-- Plate -->
+  <ellipse cx="250" cy="330" rx="100" ry="15" fill="#D4AF37" opacity="0.2"/>
+  <!-- Base tier -->
+  <rect x="158" y="285" width="184" height="50" rx="10" fill="#8B4513" opacity="0.85"/>
+  <rect x="158" y="285" width="184" height="12" rx="8" fill="#A0522D" opacity="0.6"/>
+  <!-- Mid tier -->
+  <rect x="178" y="230" width="144" height="58" rx="8" fill="#6B3410" opacity="0.9"/>
+  <rect x="178" y="230" width="144" height="10" rx="6" fill="#7B3D12" opacity="0.6"/>
+  <!-- Top tier -->
+  <rect x="200" y="175" width="100" height="58" rx="8" fill="#5C2D0E"/>
+  <!-- Frosting drips top -->
+  <path d="M200 185 Q203 172 206 185 Q209 172 212 185 Q215 172 218 185 Q221 172 224 185 Q227 172 230 185 Q233 172 236 185 Q239 172 242 185 Q245 172 248 185 Q251 172 254 185 Q257 172 260 185 Q263 172 266 185 Q269 172 272 185 Q275 172 278 185 Q281 172 284 185 Q287 172 290 185 Q293 172 296 185 Q299 172 300 185"
+        stroke="#FFF8DC" stroke-width="4" fill="none" opacity="0.9"/>
+  <!-- Frosting mid -->
+  <path d="M178 242 Q181 230 184 242 Q187 230 190 242 Q193 230 196 242 Q199 230 202 242 Q205 230 208 242 Q211 230 214 242 Q217 230 220 242 Q223 230 226 242 Q229 230 232 242 Q235 230 238 242 Q241 230 244 242 Q247 230 250 242 Q253 230 256 242 Q259 230 262 242 Q265 230 268 242 Q271 230 274 242 Q277 230 280 242 Q283 230 286 242 Q289 230 292 242 Q295 230 298 242 Q301 230 304 242 Q307 230 310 242 Q313 230 316 242 Q319 230 322 242"
+        stroke="#FFF8DC" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- Candles -->
+  <rect x="218" y="148" width="11" height="30" rx="4" fill="#E91E8C"/>
+  <rect x="244" y="142" width="12" height="36" rx="4" fill="#FFD700"/>
+  <rect x="271" y="148" width="11" height="30" rx="4" fill="#E91E8C"/>
+  <!-- Flames -->
+  <ellipse cx="223.5" cy="143" rx="5" ry="8" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="250" cy="137" rx="5.5" ry="9" fill="#FF6B35" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="276.5" cy="143" rx="5" ry="8" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+  <!-- Decorative dots on tiers -->
+  <circle cx="200" cy="260" r="4" fill="#D4AF37" opacity="0.5"/>
+  <circle cx="220" cy="255" r="3" fill="#D4AF37" opacity="0.4"/>
+  <circle cx="280" cy="260" r="4" fill="#D4AF37" opacity="0.5"/>
+  <circle cx="300" cy="255" r="3" fill="#D4AF37" opacity="0.4"/>
+  <!-- Stars -->
+  <text x="138" y="240" font-size="18" fill="#D4AF37" opacity="0.5" filter="url(#glow)">✦</text>
+  <text x="340" y="230" font-size="14" fill="#D4AF37" opacity="0.5" filter="url(#glow)">✦</text>
+  <text x="130" y="290" font-size="12" fill="#D4AF37" opacity="0.4">✦</text>
+  <text x="350" y="285" font-size="12" fill="#D4AF37" opacity="0.4">✦</text>
+
+  <!-- Brand Name -->
+  <text x="250" y="390"
+        font-family="Georgia, 'Book Antiqua', serif"
+        font-size="60"
+        font-weight="700"
+        font-style="italic"
+        letter-spacing="3"
+        fill="url(#goldGrad)"
+        text-anchor="middle"
+        filter="url(#glow)">Greg</text>
+  <text x="250" y="420"
+        font-family="Georgia, serif"
+        font-size="20"
+        letter-spacing="7"
+        fill="#FFF8DC"
+        text-anchor="middle"
+        opacity="0.9">PATISSERIE</text>
+
+  <!-- Bottom ornament -->
+  <line x1="100" y1="450" x2="420" y2="450" stroke="url(#goldGrad)" stroke-width="1" opacity="0.4"/>
+  <text x="250" y="472"
+        font-family="Georgia, serif"
+        font-size="13"
+        letter-spacing="4"
+        fill="#D4AF37"
+        text-anchor="middle"
+        opacity="0.6">LAVAL · QC · CANADA</text>
+</svg>

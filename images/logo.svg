@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cakeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DEB887;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#00000033"/>
+    </filter>
+  </defs>
+
+  <!-- Background (transparent) -->
+
+  <!-- Decorative line top -->
+  <line x1="60" y1="18" x2="190" y2="18" stroke="url(#goldGrad)" stroke-width="1.5"/>
+  <line x1="210" y1="18" x2="340" y2="18" stroke="url(#goldGrad)" stroke-width="1.5"/>
+  <circle cx="200" cy="18" r="3" fill="url(#goldGrad)"/>
+
+  <!-- Cake icon centered above text -->
+  <!-- Cake plate -->
+  <ellipse cx="200" cy="100" rx="38" ry="7" fill="#C8996A" opacity="0.9"/>
+  <!-- Cake base layer -->
+  <rect x="168" y="78" width="64" height="22" rx="4" fill="url(#cakeGrad)" filter="url(#shadow)"/>
+  <!-- Cake top layer -->
+  <rect x="176" y="60" width="48" height="20" rx="4" fill="#FFF5E1" filter="url(#shadow)"/>
+  <!-- Frosting drips -->
+  <path d="M176 64 Q178 58 180 64 Q182 58 184 64 Q186 58 188 64 Q190 58 192 64 Q194 58 196 64 Q198 58 200 64 Q202 58 204 64 Q206 58 208 64 Q210 58 212 64 Q214 58 216 64 Q218 58 220 64 Q222 58 224 64"
+        stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.8"/>
+  <!-- Candle 1 -->
+  <rect x="190" y="50" width="5" height="11" rx="2" fill="#E74C3C"/>
+  <!-- Candle 2 -->
+  <rect x="200" y="48" width="5" height="13" rx="2" fill="#E91E8C"/>
+  <!-- Candle 3 -->
+  <rect x="210" y="50" width="5" height="11" rx="2" fill="#E74C3C"/>
+  <!-- Flames -->
+  <ellipse cx="192.5" cy="48" rx="2" ry="3.5" fill="#FFD700" opacity="0.9"/>
+  <ellipse cx="202.5" cy="46" rx="2" ry="3.5" fill="#FFD700" opacity="0.9"/>
+  <ellipse cx="212.5" cy="48" rx="2" ry="3.5" fill="#FFD700" opacity="0.9"/>
+  <!-- Chocolate stripe on base layer -->
+  <rect x="168" y="87" width="64" height="4" rx="0" fill="#8B4513" opacity="0.4"/>
+  <!-- Stars / sparkles -->
+  <text x="155" y="72" font-size="10" fill="#D4AF37" opacity="0.7">✦</text>
+  <text x="238" y="68" font-size="8" fill="#D4AF37" opacity="0.7">✦</text>
+  <text x="162" y="90" font-size="6" fill="#D4AF37" opacity="0.5">✦</text>
+
+  <!-- Decorative line bottom -->
+  <line x1="60" y1="142" x2="340" y2="142" stroke="url(#goldGrad)" stroke-width="1"/>
+
+  <!-- Brand Name -->
+  <text x="200" y="135"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="11"
+        font-weight="400"
+        letter-spacing="6"
+        fill="#8B4513"
+        text-anchor="middle"
+        opacity="0.85">LAVAL · QUÉBEC · CANADA</text>
+
+  <!-- Decorative elements left -->
+  <text x="82" y="115" font-family="Georgia, serif" font-size="18" fill="#D4AF37" opacity="0.6">❧</text>
+  <text x="300" y="115" font-family="Georgia, serif" font-size="18" fill="#D4AF37" opacity="0.6" transform="scale(-1,1) translate(-600,0)">❧</text>
+
+</svg>

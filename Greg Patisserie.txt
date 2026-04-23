@@ -1,0 +1,30 @@
+Create a website and an app ( OS and Android) for Greg Patisserie 
+
+The business is located in Canada, Laval QC
+
+Will serve the Canadian, Haitian Communities 
+
+Customer should be able to place order online 
+
+Customer should be able to pay online 
+
+Customer should be able to access our social media accounts from the website ( Facebook - Google - Instagram page: (gregory1824) - Twitter)
+
+Customer should be able to pay via interact - credit card - checking and saving account - PayPal - Venmo
+
+I want to be able to send promo to customer and website visitors via email and whatsapp - IG - Facebook 
+
+Create Logo design for the website - for IG - For Facebook page - for Twitter
+
+Create advertising flyer with qr code
+
+Budget: Low cost / no fee
+Claude will be my developer to fully build develop and deploy and maintenance
+Preferred stack: Low / no budget
+Languages: French - Haitian Creole - Spanish - English
+
+Owner : Gregory Olivier 
+
+Services : Cake - CupCakes - Cookies
+
+Service Traitteur for party - birthday - wedding reception - baby shower - Fiancee 

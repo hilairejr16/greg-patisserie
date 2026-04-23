@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C1810"/>
+      <stop offset="100%" style="stop-color:#1a0f0a"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark elegant background -->
+  <rect width="500" height="200" rx="12" fill="url(#bgGrad)"/>
+  <rect width="500" height="200" rx="12" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.6"/>
+  <!-- Inner border -->
+  <rect x="8" y="8" width="484" height="184" rx="9" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Decorative top ornament -->
+  <line x1="60" y1="30" x2="185" y2="30" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="200" cy="30" r="4" fill="url(#goldGrad)" filter="url(#glow)"/>
+  <line x1="215" y1="30" x2="440" y2="30" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="60" cy="30" r="2" fill="url(#goldGrad)" opacity="0.5"/>
+  <circle cx="440" cy="30" r="2" fill="url(#goldGrad)" opacity="0.5"/>
+
+  <!-- Cake icon -->
+  <!-- Plate -->
+  <ellipse cx="250" cy="145" rx="50" ry="9" fill="#D4AF37" opacity="0.25"/>
+  <!-- Base tier -->
+  <rect x="212" y="118" width="76" height="27" rx="5" fill="#8B4513" opacity="0.8"/>
+  <rect x="212" y="118" width="76" height="7" rx="3" fill="#A0522D" opacity="0.6"/>
+  <!-- Middle tier -->
+  <rect x="222" y="95" width="56" height="25" rx="4" fill="#6B3410" opacity="0.9"/>
+  <!-- Top tier -->
+  <rect x="233" y="75" width="34" height="22" rx="4" fill="#5C2D0E"/>
+  <!-- White frosting top -->
+  <path d="M233 79 Q235 72 237 79 Q239 72 241 79 Q243 72 245 79 Q247 72 249 79 Q251 72 253 79 Q255 72 257 79 Q259 72 261 79 Q263 72 265 79 Q267 72 267 79"
+        stroke="#FFF8DC" stroke-width="2.5" fill="none" opacity="0.9"/>
+  <!-- Frosting on mid tier -->
+  <path d="M222 99 Q224 93 226 99 Q228 93 230 99 Q232 93 234 99 Q236 93 238 99 Q240 93 242 99 Q244 93 246 99 Q248 93 250 99 Q252 93 254 99 Q256 93 258 99 Q260 93 262 99 Q264 93 266 99 Q268 93 270 99 Q272 93 278 99"
+        stroke="#FFF8DC" stroke-width="2" fill="none" opacity="0.7"/>
+  <!-- Candles -->
+  <rect x="241" y="62" width="5" height="14" rx="2" fill="#E91E8C"/>
+  <rect x="251" y="60" width="5" height="16" rx="2" fill="#FFD700"/>
+  <rect x="261" y="62" width="5" height="14" rx="2" fill="#E91E8C"/>
+  <!-- Flames -->
+  <ellipse cx="243.5" cy="59" rx="2.5" ry="4" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="253.5" cy="57" rx="2.5" ry="4" fill="#FF6B35" filter="url(#glow)" opacity="0.95"/>
+  <ellipse cx="263.5" cy="59" rx="2.5" ry="4" fill="#FFD700" filter="url(#glow)" opacity="0.95"/>
+  <!-- Stars -->
+  <text x="192" y="100" font-size="10" fill="#D4AF37" opacity="0.5" filter="url(#glow)">✦</text>
+  <text x="300" y="95" font-size="8" fill="#D4AF37" opacity="0.5" filter="url(#glow)">✦</text>
+  <text x="185" y="125" font-size="7" fill="#D4AF37" opacity="0.4">✦</text>
+  <text x="308" y="120" font-size="7" fill="#D4AF37" opacity="0.4">✦</text>
+
+  <!-- Brand Name - "Greg" in script style -->
+  <text x="250" y="108"
+        font-family="Georgia, 'Book Antiqua', serif"
+        font-size="36"
+        font-weight="700"
+        font-style="italic"
+        letter-spacing="3"
+        fill="url(#goldGrad)"
+        text-anchor="middle"
+        filter="url(#glow)">Greg</text>
+
+  <!-- "PATISSERIE" -->
+  <text x="250" y="128"
+        font-family="Georgia, serif"
+        font-size="13"
+        font-weight="400"
+        letter-spacing="9"
+        fill="#FFF8DC"
+        text-anchor="middle"
+        opacity="0.9">PATISSERIE</text>
+
+  <!-- Decorative line -->
+  <line x1="80" y1="158" x2="420" y2="158" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Tagline -->
+  <text x="250" y="173"
+        font-family="Georgia, serif"
+        font-size="9"
+        letter-spacing="4"
+        fill="#D4AF37"
+        text-anchor="middle"
+        opacity="0.7">LAVAL · QUÉBEC · CANADA</text>
+
+  <!-- Ornaments -->
+  <text x="85" y="135" font-family="serif" font-size="16" fill="#D4AF37" opacity="0.4">❧</text>
+  <text x="398" y="135" font-family="serif" font-size="16" fill="#D4AF37" opacity="0.4" transform="scale(-1,1) translate(-796,0)">❧</text>
+</svg>
