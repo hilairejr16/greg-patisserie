@@ -91,7 +91,7 @@ French · English · Haitian Creole · Spanish
 📍 Laval, Québec, Canada
 📞 (514) 884-8463
 ✉️ gregpatisserie@gmail.com
-📸 Instagram: @gregory1824
+📸 Instagram: @gregpatisserie
 ```
 
 **Category:** Food & Drink
@@ -272,5 +272,5 @@ Any time Claude makes changes to the website:
 | Email | gregpatisserie@gmail.com |
 | Phone | (514) 884-8463 |
 | Website | gregpatisserie.ca |
-| Instagram | @gregory1824 |
+| Instagram | @gregpatisserie |
 | Country | Canada (QC) |

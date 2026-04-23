@@ -2,7 +2,7 @@
 
 **Owner:** Gregory Olivier  
 **Business:** Greg Patisserie, Laval, QC, Canada  
-**Instagram/Twitter/Facebook:** @gregory1824
+**Instagram/Twitter/Facebook:** @gregpatisserie
 
 ---
 
@@ -115,7 +115,7 @@ The website is already a **Progressive Web App (PWA)**. Customers can install it
 ### Facebook/Instagram
 - Connect Facebook Business Suite (free)
 - Schedule posts from Meta Business Suite
-- Use Instagram @gregory1824 to share new creations
+- Use Instagram @gregpatisserie to share new creations
 
 ---
 
@@ -126,7 +126,7 @@ Update these in `index.html` before deploying:
 ```
 Facebook:  https://www.facebook.com/gregory1824
 Instagram: https://www.instagram.com/gregory1824
-Twitter:   https://www.twitter.com/gregory1824
+Twitter:   https://www.twitter.com/gregpatisserie
 WhatsApp:  https://wa.me/1[YOUR ACTUAL PHONE NUMBER]
 ```
 
