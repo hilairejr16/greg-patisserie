@@ -28,3 +28,23 @@ Owner : Gregory Olivier
 Services : Cake - CupCakes - Cookies
 
 Service Traitteur for party - birthday - wedding reception - baby shower - Fiancee 
+
+
+netlify.com
+play.google.com/console
+codemagic.io → Sign in with GitHub (hilairejr16)
+
+
+Your 3-step action plan
+1. Build the apps FREE (Codemagic — no Mac needed)
+Go to codemagic.io → Sign in with GitHub (hilairejr16)
+Add greg-patisserie repo → run android-release workflow
+The .aab file for Google Play downloads automatically
+2. Google Play Store — $25 USD one-time
+play.google.com/console → Create account → Upload the .aab
+Full instructions in APP-STORE-GUIDE.md — Part 2A
+3. Apple App Store — $99 USD/year
+developer.apple.com → Enroll → Codemagic builds the iOS .ipa in the cloud
+Full instructions in APP-STORE-GUIDE.md — Part 2B
+
+

@@ -37,6 +37,58 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSON-LD Structured Data (Google rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Greg Patisserie",
+    "alternateName": "Greg's Patisserie",
+    "description": "Artisan bakery in Laval, QC serving custom cakes, cupcakes, cookies and catering for all occasions. Founded by Gregory Olivier, chemist and passionate baker celebrating Haitian and Caribbean flavors.",
+    "url": "https://gregpatisserie.ca",
+    "logo": "https://gregpatisserie.ca/images/logo-main.svg",
+    "image": "https://gregpatisserie.ca/images/logo-social.svg",
+    "founder": {
+      "@type": "Person",
+      "name": "Gregory Olivier"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1597 Montée Monette",
+      "addressLocality": "Laval",
+      "addressRegion": "QC",
+      "postalCode": "H7M4B6",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.6066,
+      "longitude": -73.7124
+    },
+    "telephone": "+15148848463",
+    "email": "gregpatisserie@gmail.com",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:00", "closes": "16:00" }
+    ],
+    "servesCuisine": ["French", "Caribbean", "Haitian"],
+    "priceRange": "$$",
+    "paymentAccepted": "Interac, Credit Card, PayPal, Cash",
+    "currenciesAccepted": "CAD",
+    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=1597+Montée+Monette,+Laval,+QC+H7M4B6",
+    "sameAs": [
+      "https://www.facebook.com/gregory1824",
+      "https://www.instagram.com/gregory1824",
+      "https://www.twitter.com/gregpatisserie"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Laval, Québec, Canada"
+    },
+    "menu": "https://gregpatisserie.ca/#menu"
+  }
+  </script>
 </head>
 <body>
 
@@ -144,7 +196,7 @@
       <i class="fab fa-facebook"></i> Facebook
     </a>
     <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" class="social-link">
-      <i class="fab fa-instagram"></i> Instagram @gregpatisserie
+      <i class="fab fa-instagram"></i> Instagram @gregory1824
     </a>
     <a href="https://www.twitter.com/gregpatisserie" target="_blank" rel="noopener" class="social-link">
       <i class="fab fa-twitter"></i> Twitter
@@ -180,6 +232,57 @@
 
     <div id="product-grid" class="product-grid">
       <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     HOW IT WORKS
+     ======================================================== -->
+<section class="section-sm" style="background:var(--brown-dark)">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:2.5rem">
+      <span class="section-label">Simple &amp; Easy</span>
+      <h2 style="color:var(--cream)">How to Order</h2>
+      <div class="section-divider"><span>✦</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center">
+
+      <div style="position:relative">
+        <div style="width:60px;height:60px;background:rgba(212,175,55,.15);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem">🛒</div>
+        <div style="position:absolute;top:28px;left:calc(50% + 35px);right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);display:none" class="step-line"></div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem">Step 1</div>
+        <h3 style="color:var(--cream);font-size:1.1rem;margin-bottom:.5rem">Choose Your Item</h3>
+        <p style="color:rgba(255,248,220,.65);font-size:.88rem">Browse our menu and add items to your cart, or use the order form below.</p>
+      </div>
+
+      <div>
+        <div style="width:60px;height:60px;background:rgba(212,175,55,.15);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem">📋</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem">Step 2</div>
+        <h3 style="color:var(--cream);font-size:1.1rem;margin-bottom:.5rem">Place Your Order</h3>
+        <p style="color:rgba(255,248,220,.65);font-size:.88rem">Fill in your details, pick a date (2 days minimum notice), and select your payment method.</p>
+      </div>
+
+      <div>
+        <div style="width:60px;height:60px;background:rgba(212,175,55,.15);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem">✅</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem">Step 3</div>
+        <h3 style="color:var(--cream);font-size:1.1rem;margin-bottom:.5rem">We Confirm</h3>
+        <p style="color:rgba(255,248,220,.65);font-size:.88rem">Gregory contacts you within 24h by email or WhatsApp to confirm your order and details.</p>
+      </div>
+
+      <div>
+        <div style="width:60px;height:60px;background:rgba(212,175,55,.15);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem">🎂</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem">Step 4</div>
+        <h3 style="color:var(--cream);font-size:1.1rem;margin-bottom:.5rem">Enjoy!</h3>
+        <p style="color:rgba(255,248,220,.65);font-size:.88rem">Pick up at 1597 Montée Monette, Laval, or arrange delivery. Pay and enjoy your creation.</p>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(212,175,55,.15)">
+      <p style="color:rgba(255,248,220,.6);font-size:.85rem;margin-bottom:1rem">Questions? Reach us instantly on WhatsApp</p>
+      <a href="https://wa.me/15148848463?text=Bonjour%20Greg%20Patisserie!%20Je%20voudrais%20passer%20une%20commande." target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -539,7 +642,7 @@
             <a href="https://www.instagram.com/gregory1824" target="_blank" rel="noopener" class="btn btn-primary" style="padding:.65rem 1.3rem;font-size:.8rem">
               <i class="fab fa-instagram"></i> Instagram
             </a>
-            <a href="https://www.facebook.com/gregpatisserie" target="_blank" rel="noopener" class="btn btn-outline" style="padding:.65rem 1.3rem;font-size:.8rem">
+            <a href="https://www.facebook.com/gregory1824" target="_blank" rel="noopener" class="btn btn-outline" style="padding:.65rem 1.3rem;font-size:.8rem">
               <i class="fab fa-facebook"></i> Facebook
             </a>
           </div>
@@ -590,6 +693,20 @@
         <div class="testimonial-location">Laval, QC</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     FAQ
+     ======================================================== -->
+<section class="section bg-linen" id="faq">
+  <div class="container" style="max-width:800px">
+    <div class="text-center" style="margin-bottom:3rem">
+      <span class="section-label">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <div class="section-divider"><span>✦</span></div>
+    </div>
+    <div id="faq-list"></div>
   </div>
 </section>
 
@@ -795,6 +912,22 @@
   </div>
 </footer>
 
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:2000;background:var(--brown-dark);border-top:2px solid rgba(212,175,55,.3);padding:1rem 1.5rem">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <p style="color:var(--cream);font-size:.85rem;line-height:1.5">
+        🍪 We use essential cookies to remember your language and cart preferences.
+        <a href="privacy.html" style="color:var(--gold)">Learn more</a>
+      </p>
+    </div>
+    <div style="display:flex;gap:.75rem;flex-shrink:0">
+      <button onclick="acceptCookies()" class="btn btn-primary" style="padding:.5rem 1.3rem;font-size:.8rem">Accept</button>
+      <button onclick="dismissCookies()" style="background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);padding:.5rem 1rem;border-radius:50px;font-size:.8rem;cursor:pointer">Dismiss</button>
+    </div>
+  </div>
+</div>
+
 <!-- ========================================================
      CART SIDEBAR
      ======================================================== -->
@@ -883,7 +1016,49 @@
 
     // Init payment info display
     showPaymentInstructions('interac');
+
+    // ── FAQ ──────────────────────────────────────────────────
+    const faqs = [
+      { q: "How far in advance do I need to order?", a: "We require a minimum of <strong>48 hours notice</strong> for standard orders. For wedding cakes, tiered cakes, and large catering orders, please contact us at least <strong>1–2 weeks</strong> in advance." },
+      { q: "Do you deliver?", a: "Yes! We offer delivery in the <strong>Laval and Greater Montreal</strong> area. Pickup is also available at <strong>1597 Montée Monette, Laval, QC</strong>. Delivery fees may apply depending on distance." },
+      { q: "Can I request a custom design?", a: "Absolutely. All our cakes and cookies are made to order. Describe your vision in the <em>Special Instructions</em> field when ordering, or message us on <a href='https://wa.me/15148848463' style='color:var(--gold)'>WhatsApp</a> with inspiration photos." },
+      { q: "Do you accommodate allergies?", a: "Please mention any allergies in your order notes. We work with common ingredients including nuts, dairy, eggs, and gluten. We will do our best to accommodate — contact us to discuss your specific needs." },
+      { q: "How do I pay with Interac e-Transfer?", a: "Select <strong>Interac e-Transfer</strong> at checkout, then send payment to phone number <strong>(514) 884-8463</strong>. Include your name and order in the message. Your order is confirmed once payment is received." },
+      { q: "Do you offer catering for large events?", a: "Yes! We specialize in catering for <strong>weddings, birthday parties, baby showers, engagement parties, and corporate events</strong>. Contact us with your event details for a custom quote." },
+      { q: "What languages do you serve customers in?", a: "Gregory serves clients in <strong>French, English, Haitian Creole (Kreyòl), and Spanish</strong>. Our website is fully available in all four languages — use the language selector at the top." },
+      { q: "Are your products made fresh?", a: "Yes — every item is made fresh to order. We do not carry pre-made stock. Your order is prepared specifically for your pickup or delivery date." },
+    ];
+
+    const faqEl = document.getElementById('faq-list');
+    if (faqEl) {
+      faqEl.innerHTML = faqs.map((f, i) => `
+        <div style="border-bottom:1px solid #e0d5cc;overflow:hidden">
+          <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block';this.querySelector('.faq-arrow').style.transform=this.nextElementSibling.style.display==='block'?'rotate(180deg)':'rotate(0deg)'"
+            style="width:100%;background:none;border:none;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);text-align:left;gap:1rem">
+            <span>${f.q}</span>
+            <i class="fas fa-chevron-down faq-arrow" style="color:var(--gold);font-size:.85rem;transition:transform .3s ease;flex-shrink:0"></i>
+          </button>
+          <div style="display:none;padding:0 0 1.2rem;color:var(--text-mid);font-size:.97rem;line-height:1.8">${f.a}</div>
+        </div>
+      `).join('');
+    }
+
+    // ── Cookie Consent ───────────────────────────────────────
+    if (!localStorage.getItem('gp_cookies_accepted')) {
+      setTimeout(() => {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'block';
+      }, 2000);
+    }
   });
+
+  function acceptCookies() {
+    localStorage.setItem('gp_cookies_accepted', '1');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function dismissCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
 </script>
 
 <!-- Service Worker for PWA -->
