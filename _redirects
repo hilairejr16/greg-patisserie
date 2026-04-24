@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects
+# www → non-www (once custom domain is connected)
+https://www.gregpatisserie.ca/*  https://gregpatisserie.ca/:splat  301
+
+# Friendly URL aliases
+/order     /#order    301
+/menu      /#menu     301
+/catering  /#catering 301
+/contact   /#contact  301
+/gallery   /#gallery  301
+/flyer     /flyer/promo-flyer.html  301
