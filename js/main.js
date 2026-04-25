@@ -2,6 +2,17 @@
    Greg Patisserie – Main JavaScript
    ============================================================ */
 
+/* ---------- Formspree Endpoints ----------
+   Sign up free at https://formspree.io (50 submissions/month per form)
+   1. Create 3 forms: "Order", "Newsletter", "Contact"
+   2. Replace the IDs below with yours (e.g. "xaybzckd")
+   ---------------------------------------- */
+const FORMSPREE = {
+  order:      'xyzorder1',    // ← replace with your Order form ID
+  newsletter: 'xyznews1',     // ← replace with your Newsletter form ID
+  contact:    'xyzcontact1',  // ← replace with your Contact form ID
+};
+
 /* ---------- Products Data ---------- */
 const products = [
   // Cakes
@@ -231,24 +242,45 @@ function initOrderForm() {
     });
   });
 
-  // Submit
+  // Submit → Formspree
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('[type="submit"]');
-    const origText = btn.textContent;
-    btn.textContent = '...';
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
     btn.disabled = true;
 
-    await new Promise(r => setTimeout(r, 1500)); // Simulate processing
+    // Build FormData from form fields
+    const formData = new FormData(form);
 
-    // In production, send to Netlify Forms / backend
-    btn.textContent = origText;
-    btn.disabled = false;
-    showToast('✓ ' + (t('order_success') || 'Order placed successfully!'), 'success');
-    form.reset();
-    cart = [];
-    saveCart();
-    renderCart();
+    // Append cart summary if items in cart
+    if (cart.length > 0) {
+      const lines = cart.map(i => `${i.emoji} ${i.name} x${i.qty} = $${(i.price * i.qty).toFixed(2)} CAD`);
+      formData.set('cart_items', lines.join('\n'));
+      formData.set('cart_total', `$${getCartTotal().toFixed(2)} CAD`);
+    }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE.order}`, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        showToast('✓ ' + (t('order_success') || 'Order received! We\'ll confirm within 24h.'), 'success');
+        form.reset();
+        cart = [];
+        saveCart();
+        renderCart();
+      } else {
+        throw new Error('server error');
+      }
+    } catch {
+      showToast('⚠ Could not send order. Please message us on WhatsApp.', 'error');
+    } finally {
+      btn.innerHTML = origHTML;
+      btn.disabled = false;
+    }
   });
 }
 
@@ -272,12 +304,63 @@ function showPaymentInstructions(method) {
 function initPromoForm() {
   const form = document.querySelector('.promo-form');
   if (!form) return;
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const email = form.querySelector('input[type="email"]')?.value;
-    if (!email) return;
-    showToast(`✓ Subscribed! Welcome to Greg Patisserie.`, 'success');
-    form.reset();
+    const btn = form.querySelector('button[type="submit"]');
+    const origText = btn.textContent;
+    btn.textContent = '…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE.newsletter}`, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        showToast('✓ Subscribed! Welcome to Greg Patisserie 🎂', 'success');
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      showToast('⚠ Subscription failed. Try again or email us directly.', 'error');
+    } finally {
+      btn.textContent = origText;
+      btn.disabled = false;
+    }
+  });
+}
+
+/* ---------- Contact Form ---------- */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE.contact}`, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        showToast('✓ Message sent! Gregory will reply within 24h.', 'success');
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      showToast('⚠ Message not sent. Please try WhatsApp or email.', 'error');
+    } finally {
+      btn.innerHTML = origHTML;
+      btn.disabled = false;
+    }
   });
 }
 
@@ -357,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initOrderForm();
   initPromoForm();
+  initContactForm();
   initSmoothScroll();
   initPWA();
   updateCartBadge();
