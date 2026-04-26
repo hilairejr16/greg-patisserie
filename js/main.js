@@ -132,8 +132,9 @@ function renderProducts(filter = 'all') {
         <div class="product-name">${p.nameKey}${p.popular ? ' <span style="font-size:.65rem;background:var(--gold);color:var(--brown-dark);padding:2px 7px;border-radius:50px;vertical-align:middle;font-family:Montserrat,sans-serif;font-weight:700">★ POPULAR</span>' : ''}</div>
         <div class="product-desc">${p.desc}</div>
         <div class="product-footer">
-          <div class="product-price">$${p.price.toFixed(2)} <span style="font-size:.75rem;font-weight:400;color:var(--gray)">CAD</span></div>
-          <button class="add-to-cart" onclick="addToCart(${p.id})" title="${t('add_cart') || 'Add to cart'}">+</button>
+          <button class="add-to-cart" onclick="addToCart(${p.id})" title="${t('add_cart') || 'Add to cart'}" style="width:100%;border-radius:50px;padding:.55rem 1.2rem;font-size:.85rem">
+            <i class="fas fa-shopping-bag" style="font-size:.8rem"></i> ${t('add_cart') || 'Add to Cart'}
+          </button>
         </div>
       </div>
     </div>
