@@ -2,7 +2,7 @@
    Greg Patisserie – Service Worker (PWA)
    ============================================================ */
 
-const CACHE_NAME = 'greg-patisserie-v1';
+const CACHE_NAME = 'greg-patisserie-v2';
 const ASSETS = [
   '/',
   '/index.html',
