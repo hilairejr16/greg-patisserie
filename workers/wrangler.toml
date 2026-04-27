@@ -1,0 +1,12 @@
+name            = "gp-sms-notify"
+main            = "sms-worker.js"
+compatibility_date = "2025-01-01"
+
+# Secrets are stored securely — never put real values here
+# Set them with: wrangler secret put TWILIO_ACCOUNT_SID
+# (run from inside the workers/ folder)
+#
+# Required secrets:
+#   TWILIO_ACCOUNT_SID    — from twilio.com/console
+#   TWILIO_AUTH_TOKEN     — from twilio.com/console
+#   TWILIO_FROM_NUMBER    — your Twilio phone number e.g. +15141234567
