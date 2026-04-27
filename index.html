@@ -973,9 +973,20 @@
 <!-- Toast container -->
 <div class="toast-container"></div>
 
+<!-- EmailJS (customer receipt emails — free 200/month) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS — replace with your public key from emailjs.com
+  (function(){
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({ publicKey: 'xxxxxxxxxxxx' }); // ← replace with your EmailJS Public Key
+    }
+  })();
+</script>
+
 <!-- Scripts -->
 <script src="js/i18n.js?v=2"></script>
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=3"></script>
 <script>
   // Additional inline init
   document.addEventListener('DOMContentLoaded', () => {

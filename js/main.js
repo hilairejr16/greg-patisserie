@@ -2,16 +2,40 @@
    Greg Patisserie – Main JavaScript
    ============================================================ */
 
-/* ---------- Formspree Endpoints ----------
-   Sign up free at https://formspree.io (50 submissions/month per form)
-   1. Create 3 forms: "Order", "Newsletter", "Contact"
-   2. Replace the IDs below with yours (e.g. "xaybzckd")
-   ---------------------------------------- */
+/* ============================================================
+   NOTIFICATION CONFIG
+   Fill in each service after signing up (all free tiers available)
+   ============================================================ */
+
+/* --- Formspree (order storage + email to Gregory) ---
+   Sign up: https://formspree.io
+   Free: 50 submissions/month per form                    */
 const FORMSPREE = {
   order:      'xyzorder1',    // ← replace with your Order form ID
   newsletter: 'xyznews1',     // ← replace with your Newsletter form ID
   contact:    'xyzcontact1',  // ← replace with your Contact form ID
 };
+
+/* --- EmailJS (receipt email to customer) ---
+   Sign up: https://emailjs.com
+   Free: 200 emails/month
+   1. Add Gmail service → note Service ID
+   2. Create template with variables below → note Template ID
+   3. Account → API Keys → note Public Key               */
+const EMAILJS_CONFIG = {
+  serviceId:  'service_xxxxxxx',   // ← your EmailJS Service ID
+  templateId: 'template_xxxxxxx',  // ← your EmailJS Template ID
+  publicKey:  'xxxxxxxxxxxx',      // ← your EmailJS Public Key
+};
+
+/* --- Twilio SMS (text message to customer) ---
+   Sign up: https://twilio.com (free trial ~$15 credit ≈ 500 SMS)
+   Deploy the worker: see NOTIFICATIONS-GUIDE.md
+   Leave blank ('') to skip SMS                          */
+const TWILIO_WORKER_URL = ''; // ← your Cloudflare Worker URL e.g. https://gp-notify.workers.dev
+
+/* Gregory's WhatsApp number (do not change) */
+const OWNER_WHATSAPP = '15148848463';
 
 /* ---------- Products Data ---------- */
 const products = [
@@ -243,7 +267,7 @@ function initOrderForm() {
     });
   });
 
-  // Submit → Formspree
+  // Submit → Full notification flow
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('[type="submit"]');
@@ -251,33 +275,118 @@ function initOrderForm() {
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
     btn.disabled = true;
 
-    // Build FormData from form fields
-    const formData = new FormData(form);
+    // ── Collect order data ────────────────────────────────────
+    const fd = new FormData(form);
+    const order = {
+      name:       fd.get('name')       || '',
+      email:      fd.get('email')      || '',
+      phone:      fd.get('phone')      || '',
+      product:    fd.get('product')    || '',
+      quantity:   fd.get('quantity')   || '1',
+      date:       fd.get('date')       || '',
+      order_type: fd.get('order_type') || 'pickup',
+      address:    fd.get('address')    || 'N/A',
+      payment:    fd.get('payment')    || '',
+      notes:      fd.get('notes')      || 'None',
+      ref:        'GP-' + Date.now().toString(36).toUpperCase(),
+    };
 
-    // Append cart summary if items in cart
-    if (cart.length > 0) {
-      const lines = cart.map(i => `${i.emoji} ${i.name} x${i.qty} = $${(i.price * i.qty).toFixed(2)} CAD`);
-      formData.set('cart_items', lines.join('\n'));
-      formData.set('cart_total', `$${getCartTotal().toFixed(2)} CAD`);
-    }
+    // Cart items
+    const cartLines = cart.length > 0
+      ? cart.map(i => `${i.emoji} ${i.name} x${i.qty} — $${(i.price * i.qty).toFixed(2)} CAD`).join('\n')
+      : order.product + ' x' + order.quantity;
+    const cartTotal = cart.length > 0
+      ? `$${getCartTotal().toFixed(2)} CAD`
+      : 'Pricing will be confirmed by Gregory';
+
+    // Append to FormData for Formspree
+    fd.set('order_ref',  order.ref);
+    fd.set('cart_items', cartLines);
+    fd.set('cart_total', cartTotal);
+
+    // ── Receipt text (shared across all channels) ─────────────
+    const receiptText =
+`🎂 GREG PATISSERIE — Order Confirmation
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Order Ref: ${order.ref}
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 Name:    ${order.name}
+📧 Email:   ${order.email}
+📱 Phone:   ${order.phone}
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛒 Items:
+${cartLines}
+
+💰 Total:   ${cartTotal}
+📅 Date:    ${order.date}
+🚚 Type:    ${order.order_type === 'delivery' ? 'Delivery to: ' + order.address : 'Pickup at 1597 Montée Monette, Laval'}
+💳 Payment: ${order.payment}
+📝 Notes:   ${order.notes}
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Gregory will confirm your order within 24h.
+📞 (514) 884-8463 | gregpatisserie@gmail.com
+greg-patisserie.pages.dev`;
+
+    let formspreeOk = false;
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE.order}`, {
+      // ── 1. Formspree (stores order + emails Gregory) ──────────
+      const fsRes = await fetch(`https://formspree.io/f/${FORMSPREE.order}`, {
         method: 'POST',
-        body: formData,
+        body: fd,
         headers: { Accept: 'application/json' },
       });
-      if (res.ok) {
-        showToast('✓ ' + (t('order_success') || 'Order received! We\'ll confirm within 24h.'), 'success');
+      formspreeOk = fsRes.ok;
+
+      // ── 2. EmailJS (receipt email to customer) ────────────────
+      if (typeof emailjs !== 'undefined' &&
+          EMAILJS_CONFIG.serviceId !== 'service_xxxxxxx') {
+        emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+          to_name:    order.name,
+          to_email:   order.email,
+          order_ref:  order.ref,
+          order_date: order.date,
+          order_type: order.order_type === 'delivery'
+                        ? 'Delivery to ' + order.address
+                        : 'Pickup at 1597 Montée Monette, Laval, QC',
+          cart_items: cartLines,
+          cart_total: cartTotal,
+          payment:    order.payment,
+          phone:      order.phone,
+          notes:      order.notes,
+          receipt:    receiptText,
+        }, EMAILJS_CONFIG.publicKey).catch(() => {});
+      }
+
+      // ── 3. SMS via Cloudflare Worker → Twilio ─────────────────
+      if (TWILIO_WORKER_URL && order.phone) {
+        fetch(TWILIO_WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ to: order.phone, body: receiptText }),
+        }).catch(() => {});
+      }
+
+      // ── 4. WhatsApp (auto-open chat to Gregory with receipt) ──
+      const waMsg = encodeURIComponent(
+        `Bonjour Greg Patisserie! 👋\n\nI just placed an order:\n\n` + receiptText
+      );
+      // Show success + open WhatsApp after short delay
+      if (formspreeOk) {
+        showOrderSuccessModal(order, receiptText);
+        setTimeout(() => {
+          window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${waMsg}`, '_blank');
+        }, 1500);
         form.reset();
         cart = [];
         saveCart();
         renderCart();
       } else {
-        throw new Error('server error');
+        throw new Error('Formspree failed');
       }
+
     } catch {
-      showToast('⚠ Could not send order. Please message us on WhatsApp.', 'error');
+      showToast('⚠ Could not send order. Please message us on WhatsApp directly.', 'error');
     } finally {
       btn.innerHTML = origHTML;
       btn.disabled = false;
@@ -299,6 +408,100 @@ function showPaymentInstructions(method) {
 
   infoBox.innerHTML = instructions[method] || '';
   infoBox.style.display = instructions[method] ? 'block' : 'none';
+}
+
+/* ---------- Order Success Modal ---------- */
+function showOrderSuccessModal(order, receiptText) {
+  // Remove any existing modal
+  document.getElementById('order-success-modal')?.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'order-success-modal';
+  modal.style.cssText = `
+    position:fixed;inset:0;z-index:9999;display:flex;align-items:center;
+    justify-content:center;background:rgba(44,24,16,0.85);padding:1rem;
+  `;
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;
+                box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden;animation:fadeInUp .35s ease">
+      <!-- Header -->
+      <div style="background:var(--brown-dark,#2C1810);padding:2rem;text-align:center">
+        <div style="font-size:3rem;margin-bottom:.5rem">🎂</div>
+        <h2 style="color:#D4AF37;font-family:'Cormorant Garamond',serif;margin:0;font-size:1.8rem">
+          Order Received!
+        </h2>
+        <p style="color:rgba(255,248,220,.75);font-size:.85rem;margin:.4rem 0 0;font-family:'Montserrat',sans-serif">
+          Ref: <strong style="color:#D4AF37">${order.ref}</strong>
+        </p>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:1.8rem">
+        <p style="color:#5C3317;font-size:.95rem;margin-bottom:1.2rem;line-height:1.7">
+          Hi <strong>${order.name}</strong>! Your order has been submitted. Gregory will confirm
+          within <strong>24 hours</strong> by email and WhatsApp.
+        </p>
+
+        <!-- Notification status -->
+        <div style="background:#fdf6ee;border:1px solid #e8d5b7;border-radius:10px;padding:1.2rem;margin-bottom:1.4rem">
+          <p style="font-family:'Montserrat',sans-serif;font-size:.72rem;letter-spacing:.15em;
+                     text-transform:uppercase;color:#8B6914;margin-bottom:.9rem;font-weight:600">
+            Notifications Sent
+          </p>
+          <div style="display:flex;flex-direction:column;gap:.55rem">
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
+              <span style="color:#4CAF50;font-size:1rem">✓</span>
+              <span>📧 Order saved — Gregory notified by email</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
+              <span style="color:#4CAF50;font-size:1rem">✓</span>
+              <span>📨 Receipt sent to <strong>${order.email}</strong></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
+              <span style="color:#25D366;font-size:1rem">✓</span>
+              <span>💬 WhatsApp opening with your order details…</span>
+            </div>
+            ${order.phone ? `
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
+              <span style="color:#4CAF50;font-size:1rem">✓</span>
+              <span>📱 SMS receipt queued to ${order.phone}</span>
+            </div>` : ''}
+          </div>
+        </div>
+
+        <!-- Receipt preview -->
+        <details style="margin-bottom:1.4rem">
+          <summary style="cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.78rem;
+                          color:#8B6914;font-weight:600;letter-spacing:.08em">
+            VIEW ORDER SUMMARY ▾
+          </summary>
+          <pre style="margin:.8rem 0 0;background:#fdf6ee;border-radius:8px;padding:1rem;
+                      font-size:.75rem;color:#5C3317;white-space:pre-wrap;line-height:1.6;
+                      font-family:'Courier New',monospace;overflow-x:auto">${receiptText}</pre>
+        </details>
+
+        <!-- Action buttons -->
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <a href="https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent('Bonjour! My order ref is ' + order.ref + '. Please confirm.')}"
+             target="_blank" rel="noopener"
+             style="flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;
+                    gap:.5rem;background:#25D366;color:#fff;border-radius:50px;padding:.75rem 1rem;
+                    font-size:.82rem;font-weight:600;text-decoration:none;font-family:'Montserrat',sans-serif">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+          <button onclick="document.getElementById('order-success-modal').remove()"
+                  style="flex:1;min-width:120px;background:var(--brown-dark,#2C1810);color:#D4AF37;
+                         border:none;border-radius:50px;padding:.75rem 1rem;font-size:.82rem;
+                         font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif">
+            Close ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+  modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
 }
 
 /* ---------- Newsletter Form ---------- */
