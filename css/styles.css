@@ -408,12 +408,10 @@ h3 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
 .product-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .product-price {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--brown-mid);
+  display: none !important; /* Price shown only in cart */
 }
 .add-to-cart {
   background: var(--gold);
