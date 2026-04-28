@@ -69,13 +69,15 @@
 - **Free tier:** 50 submissions/month per form
 - **Forms configured:**
 
-| Form | Purpose | ID (update in js/main.js) |
-|------|---------|--------------------------|
-| Order | Customer orders → email to Gregory | `FORMSPREE.order` |
-| Newsletter | Email subscriptions | `FORMSPREE.newsletter` |
-| Contact | General inquiries | `FORMSPREE.contact` |
+| Form | Purpose | ID | Formspree URL |
+|------|---------|-----|--------------|
+| Order | Customer orders → email to Gregory | `mojyglwr` | https://formspree.io/f/mojyglwr |
+| Newsletter | Email subscriptions | `xnjlezzj` | https://formspree.io/f/xnjlezzj |
+| Contact | General inquiries | `xaqarbbj` | https://formspree.io/f/xaqarbbj |
+| Catering Quotes | Event quote requests | `mlgaqllw` | https://formspree.io/f/mlgaqllw |
 
-- **Config location:** `js/main.js` lines ~10-14 (`const FORMSPREE = { ... }`)
+- **Config location:** `js/main.js` const FORMSPREE block (lines ~10–15)
+- **Status:** ✅ All 4 forms live and wired up
 
 ### EmailJS (Customer Receipt Emails)
 - **Account:** gregpatisserie@gmail.com
@@ -294,7 +296,7 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Formspree form IDs | ⚠️ Pending | Account created — paste 3 IDs into js/main.js |
+| Formspree form IDs | ✅ Done | mojyglwr / xnjlezzj / xaqarbbj / mlgaqllw |
 | EmailJS setup | ⚠️ Pending | Need Service ID, Template ID, Public Key |
 | Twilio SMS Worker | ⚠️ Pending | Free account + deploy worker + set TWILIO_WORKER_URL |
 | Real gallery photos | ⚠️ Pending | Send to gregpatisserie@gmail.com or drop in images/gallery/ |

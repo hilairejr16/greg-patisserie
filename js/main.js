@@ -11,10 +11,10 @@
    Sign up: https://formspree.io
    Free: 50 submissions/month per form                    */
 const FORMSPREE = {
-  order:      'xyzorder1',    // ← replace with your Order form ID
-  newsletter: 'xyznews1',     // ← replace with your Newsletter form ID
-  contact:    'xyzcontact1',  // ← replace with your Contact form ID
-  quote:      'xyzquote1',    // ← replace with your Catering Quote form ID
+  order:      'mojyglwr',   // GP - Orders
+  newsletter: 'xnjlezzj',  // GP - Newsletter
+  contact:    'xaqarbbj',  // GP - Contact
+  quote:      'mlgaqllw',  // GP - Catering Quotes
 };
 
 /* --- EmailJS (receipt email to customer) ---
