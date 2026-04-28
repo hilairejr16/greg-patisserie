@@ -325,7 +325,7 @@ ${cartLines}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 Gregory will confirm your order within 24h.
 📞 (514) 884-8463 | gregpatisserie@gmail.com
-greg-patisserie.pages.dev`;
+www.patisseriegregory.ca`;
 
     let formspreeOk = false;
 

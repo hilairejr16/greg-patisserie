@@ -30,8 +30,8 @@
 
 | Environment | URL |
 |-------------|-----|
-| **Live site (Cloudflare Pages)** | https://greg-patisserie.pages.dev |
-| **Custom domain** | https://www.patisseriegregory.ca *(purchased Apr 2026 via Cloudflare Registrar)* |
+| **Primary URL (custom domain)** | https://www.patisseriegregory.ca ✅ |
+| **Fallback (Cloudflare Pages)** | https://greg-patisserie.pages.dev |
 | **GitHub repo** | https://github.com/hilairejr16/greg-patisserie |
 | **Branch** | `master` |
 | **Auto-deploy** | Every `git push` to `master` triggers Cloudflare Pages build |
@@ -301,7 +301,7 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Codemagic (mobile CI) | ⚠️ Pending | Sign up at codemagic.io |
 | Android keystore | ⚠️ Pending | Generate with keytool before Play Store submission |
 | PayPal.me link | ⚠️ Pending | Create paypal.me/gregpatisserie |
-| patisseriegregory.ca DNS | ⚠️ Verify | Confirm domain connected to Pages project in CF dashboard |
+| patisseriegregory.ca DNS | ⚠️ Add custom domain in CF Pages dashboard | Workers & Pages → greg-patisserie → Custom Domains → Add www.patisseriegregory.ca |
 
 ---
 
