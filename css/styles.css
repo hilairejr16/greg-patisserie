@@ -251,6 +251,9 @@ h3 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
   font-family: 'Montserrat', sans-serif;
 }
 
+/* Mobile nav — hidden by default, shown only on mobile via media query */
+.nav-mobile { display: none; }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -448,6 +451,10 @@ h3 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
   padding: 2rem 1.5rem;
   text-align: center;
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 .catering-card:hover {
   background: rgba(212,175,55,0.15);
@@ -468,6 +475,7 @@ h3 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
   font-weight: 700;
   letter-spacing: .05em;
   cursor: pointer;
+  margin-top: auto;
   transition: all .25s ease;
   display: inline-flex;
   align-items: center;
