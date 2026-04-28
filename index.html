@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 
   <!-- JSON-LD Structured Data (Google rich results) -->
   <script type="application/ld+json">
@@ -466,43 +466,49 @@
     </div>
 
     <div class="catering-grid">
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Birthday Party')" style="cursor:pointer">
         <div class="catering-icon">🎂</div>
         <h3 data-i18n="ev_birthday">Fêtes d'Anniversaire</h3>
         <p>Custom cakes, cupcake towers, cookie platters</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Wedding Reception')" style="cursor:pointer">
         <div class="catering-icon">💍</div>
         <h3 data-i18n="ev_wedding">Réceptions de Mariage</h3>
         <p>Multi-tier wedding cakes, dessert tables, petit fours</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Baby Shower')" style="cursor:pointer">
         <div class="catering-icon">👶</div>
         <h3 data-i18n="ev_baby">Baby Showers</h3>
         <p>Themed cakes, gender reveal cakes, cupcake displays</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Engagement / Fiançailles')" style="cursor:pointer">
         <div class="catering-icon">💒</div>
         <h3 data-i18n="ev_fiancee">Fiançailles</h3>
         <p>Elegant engagement cakes, macaron towers</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Corporate Event')" style="cursor:pointer">
         <div class="catering-icon">🏢</div>
         <h3 data-i18n="ev_corporate">Événements Corporatifs</h3>
         <p>Branded cakes, large-scale dessert service</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
-      <div class="catering-card">
+      <div class="catering-card" onclick="openQuoteModal('Custom Event')" style="cursor:pointer">
         <div class="catering-icon">🎉</div>
         <h3 data-i18n="ev_custom">Événements Personnalisés</h3>
         <p>Graduations, holiday parties, cultural events</p>
+        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
     </div>
 
     <div class="text-center" style="margin-top:3rem">
-      <a href="#order" class="btn btn-primary">
+      <button onclick="openQuoteModal('')" class="btn btn-primary">
         <i class="fas fa-calendar-alt"></i>
-        <span data-i18n="order_now">Réserver</span>
-      </a>
+        <span>Request a Custom Quote</span>
+      </button>
     </div>
   </div>
 </section>
@@ -913,6 +919,112 @@
   </div>
 </footer>
 
+<!-- ========================================================
+     CATERING QUOTE MODAL
+     ======================================================== -->
+<div id="quote-modal" style="display:none;position:fixed;inset:0;z-index:8000;background:rgba(44,24,16,0.85);padding:1rem;overflow-y:auto;align-items:flex-start;justify-content:center">
+  <div style="background:#fff;border-radius:16px;max-width:580px;width:100%;margin:2rem auto;overflow:hidden;animation:fadeInUp .3s ease">
+
+    <!-- Modal Header -->
+    <div style="background:var(--brown-dark);padding:1.8rem 2rem;display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem">Greg Patisserie</div>
+        <h2 style="color:var(--cream);font-size:1.6rem;margin:0">Request a Quote</h2>
+      </div>
+      <button onclick="closeQuoteModal()" style="background:rgba(255,255,255,.1);border:none;color:var(--cream);width:38px;height:38px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer">✕</button>
+    </div>
+
+    <!-- Modal Body -->
+    <form id="quote-form" style="padding:2rem">
+      <!-- Event type badge -->
+      <div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:.8rem 1rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem">
+        <span style="font-size:1.3rem" id="quote-event-icon">🎉</span>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase">Event Type</div>
+          <div id="quote-event-label" style="font-weight:700;color:var(--brown-dark);font-size:1rem">Select below</div>
+        </div>
+      </div>
+
+      <input type="hidden" name="form_type" value="catering_quote">
+      <input type="hidden" id="quote-event-input" name="event_type">
+
+      <!-- Event type select (shown if opened from main button) -->
+      <div class="form-group" id="quote-event-select-wrap" style="display:none">
+        <label class="form-label">Event Type *</label>
+        <select id="quote-event-select" class="form-select" onchange="updateQuoteEventFromSelect(this.value)" required>
+          <option value="">— Select event type —</option>
+          <option value="Birthday Party">🎂 Birthday Party</option>
+          <option value="Wedding Reception">💍 Wedding Reception</option>
+          <option value="Baby Shower">👶 Baby Shower</option>
+          <option value="Engagement / Fiançailles">💒 Engagement / Fiançailles</option>
+          <option value="Corporate Event">🏢 Corporate Event</option>
+          <option value="Custom Event">🎉 Custom Event</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" name="name" class="form-input" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" name="phone" class="form-input" placeholder="(514) 000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Event Date *</label>
+          <input type="date" id="quote-date" name="event_date" class="form-input" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Number of Guests</label>
+          <select name="guests" class="form-select">
+            <option value="">— Estimate —</option>
+            <option>Under 25</option>
+            <option>25 – 50</option>
+            <option>50 – 100</option>
+            <option>100 – 200</option>
+            <option>200+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Budget Range (CAD)</label>
+          <select name="budget" class="form-select">
+            <option value="">— Approximate —</option>
+            <option>Under $100</option>
+            <option>$100 – $300</option>
+            <option>$300 – $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tell us about your event</label>
+        <textarea name="message" class="form-textarea" rows="4"
+          placeholder="Theme, colours, flavour preferences, special requests, delivery address..."></textarea>
+      </div>
+
+      <button type="submit" id="quote-submit-btn" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:.95rem">
+        <i class="fas fa-paper-plane"></i> Send Quote Request
+      </button>
+      <p style="text-align:center;font-size:.78rem;color:var(--gray);margin-top:.8rem">
+        <i class="fas fa-clock"></i> Gregory responds within 24 hours by email &amp; WhatsApp
+      </p>
+    </form>
+  </div>
+</div>
+
 <!-- Cookie Consent Banner -->
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:2000;background:var(--brown-dark);border-top:2px solid rgba(212,175,55,.3);padding:1rem 1.5rem">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
@@ -989,8 +1101,8 @@
 </script>
 
 <!-- Scripts -->
-<script src="js/i18n.js?v=2"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/i18n.js?v=4"></script>
+<script src="js/main.js?v=4"></script>
 <script>
   // Additional inline init
   document.addEventListener('DOMContentLoaded', () => {

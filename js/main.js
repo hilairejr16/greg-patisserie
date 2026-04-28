@@ -14,6 +14,7 @@ const FORMSPREE = {
   order:      'xyzorder1',    // ← replace with your Order form ID
   newsletter: 'xyznews1',     // ← replace with your Newsletter form ID
   contact:    'xyzcontact1',  // ← replace with your Contact form ID
+  quote:      'xyzquote1',    // ← replace with your Catering Quote form ID
 };
 
 /* --- EmailJS (receipt email to customer) ---
@@ -504,6 +505,126 @@ function showOrderSuccessModal(order, receiptText) {
   modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
 }
 
+/* ---------- Catering Quote Modal ---------- */
+const EVENT_ICONS = {
+  'Birthday Party':           '🎂',
+  'Wedding Reception':        '💍',
+  'Baby Shower':              '👶',
+  'Engagement / Fiançailles': '💒',
+  'Corporate Event':          '🏢',
+  'Custom Event':             '🎉',
+  '':                         '🎉',
+};
+
+function openQuoteModal(eventType) {
+  const modal     = document.getElementById('quote-modal');
+  const iconEl    = document.getElementById('quote-event-icon');
+  const labelEl   = document.getElementById('quote-event-label');
+  const inputEl   = document.getElementById('quote-event-input');
+  const selectWrap= document.getElementById('quote-event-select-wrap');
+  const selectEl  = document.getElementById('quote-event-select');
+  const dateEl    = document.getElementById('quote-date');
+
+  // Set min date (2 days from today)
+  if (dateEl) {
+    const d = new Date(); d.setDate(d.getDate() + 2);
+    dateEl.min = d.toISOString().split('T')[0];
+  }
+
+  if (eventType) {
+    iconEl.textContent   = EVENT_ICONS[eventType] || '🎉';
+    labelEl.textContent  = eventType;
+    inputEl.value        = eventType;
+    selectWrap.style.display = 'none';
+  } else {
+    // Opened from generic button — show select
+    iconEl.textContent   = '🎉';
+    labelEl.textContent  = 'Select below';
+    inputEl.value        = '';
+    selectWrap.style.display = 'block';
+    if (selectEl) selectEl.value = '';
+  }
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQuoteModal() {
+  const modal = document.getElementById('quote-modal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function updateQuoteEventFromSelect(val) {
+  document.getElementById('quote-event-input').value = val;
+  document.getElementById('quote-event-icon').textContent  = EVENT_ICONS[val] || '🎉';
+  document.getElementById('quote-event-label').textContent = val || 'Select below';
+}
+
+function initQuoteForm() {
+  const modal = document.getElementById('quote-modal');
+  const form  = document.getElementById('quote-form');
+  if (!form) return;
+
+  // Close on backdrop click
+  modal?.addEventListener('click', e => { if (e.target === modal) closeQuoteModal(); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('quote-submit-btn');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    btn.disabled = true;
+
+    const fd = new FormData(form);
+    const name      = fd.get('name') || '';
+    const email     = fd.get('email') || '';
+    const phone     = fd.get('phone') || '';
+    const eventType = fd.get('event_type') || fd.get('event_type_select') || 'Not specified';
+    const eventDate = fd.get('event_date') || '';
+    const guests    = fd.get('guests') || '';
+    const budget    = fd.get('budget') || '';
+    const message   = fd.get('message') || '';
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE.quote}`, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        // WhatsApp notification to Gregory
+        const waMsg = encodeURIComponent(
+          `📋 NEW CATERING QUOTE REQUEST\n\n` +
+          `Event: ${eventType}\n` +
+          `Date: ${eventDate}\n` +
+          `Guests: ${guests}\n` +
+          `Budget: ${budget}\n` +
+          `Name: ${name}\n` +
+          `Email: ${email}\n` +
+          `Phone: ${phone}\n` +
+          `Message: ${message}`
+        );
+        setTimeout(() => {
+          window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${waMsg}`, '_blank');
+        }, 800);
+
+        closeQuoteModal();
+        form.reset();
+        showToast(`✓ Quote request sent! Gregory will contact you within 24h.`, 'success');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      showToast('⚠ Could not send quote. Please WhatsApp us directly.', 'error');
+    } finally {
+      btn.innerHTML = origHTML;
+      btn.disabled = false;
+    }
+  });
+}
+
 /* ---------- Newsletter Form ---------- */
 function initPromoForm() {
   const form = document.querySelector('.promo-form');
@@ -645,6 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrderForm();
   initPromoForm();
   initContactForm();
+  initQuoteForm();
   initSmoothScroll();
   initPWA();
   updateCartBadge();
