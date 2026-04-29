@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greg Patisserie – Google Review QR Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #2C1810;
+      --gold: #D4AF37;
+      --gold-light: #F0D060;
+      --cream: #FFF8DC;
+      --linen: #FAF0E6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #e8ddd4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    @media print {
+      body { background: white; padding: 0; gap: 1rem; }
+      .no-print { display: none !important; }
+      .setup-panel { display: none !important; }
+      .card { box-shadow: none !important; }
+      .print-note { display: block !important; }
+    }
+
+    /* ── Setup panel ── */
+    .setup-panel {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(44,24,16,0.12);
+    }
+    .setup-panel h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--brown);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .setup-panel p { font-size: 0.85rem; color: #666; margin-bottom: 1.2rem; line-height: 1.6; }
+    .setup-panel label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brown);
+      margin-bottom: 0.4rem;
+    }
+    .setup-panel input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 2px solid #e8ddd4;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .setup-panel input:focus { outline: none; border-color: var(--gold); }
+    .update-btn {
+      background: var(--gold);
+      color: var(--brown);
+      border: none;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .update-btn:hover { background: var(--gold-light); }
+
+    .steps {
+      background: #fdf6ee;
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .steps h4 { font-size: 0.8rem; color: var(--brown); font-weight: 700; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .steps ol { padding-left: 1.2rem; }
+    .steps li { font-size: 0.82rem; color: #555; line-height: 1.7; }
+    .steps a { color: var(--gold); font-weight: 600; }
+
+    /* ── QR Cards grid ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 880px;
+      width: 100%;
+    }
+
+    /* ── Single printable card ── */
+    .card {
+      background: var(--brown);
+      border-radius: 20px;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(44,24,16,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .card-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.15rem;
+    }
+    .card-tagline {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: rgba(255,248,220,0.55);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.4rem;
+      opacity: 0.5;
+    }
+
+    .card-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--cream);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .card-sub {
+      font-size: 0.68rem;
+      color: rgba(255,248,220,0.6);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* QR code image container */
+    .qr-box {
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .qr-box img {
+      display: block;
+      width: 180px;
+      height: 180px;
+      border-radius: 6px;
+    }
+
+    .card-cta {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .card-url {
+      font-size: 0.65rem;
+      color: rgba(255,248,220,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Bonus: table tent (landscape small) ── */
+    .tent-card {
+      background: var(--brown);
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: 0 6px 24px rgba(44,24,16,0.2);
+    }
+    .tent-qr {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      flex-shrink: 0;
+    }
+    .tent-qr img { display: block; width: 120px; height: 120px; border-radius: 4px; }
+    .tent-text { text-align: left; }
+    .tent-text .brand { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .tent-text .headline { font-size: 1.05rem; color: var(--cream); font-weight: 700; margin-bottom: 0.3rem; line-height: 1.3; }
+    .tent-text .sub { font-size: 0.75rem; color: rgba(255,248,220,0.6); margin-bottom: 0.6rem; }
+    .tent-text .stars { font-size: 0.9rem; margin-bottom: 0; }
+
+    .section-label-outer {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #8B6914;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .print-note {
+      display: none;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 1rem;
+    }
+
+    .print-btn-wrap { text-align: center; }
+    .print-btn {
+      background: var(--gold);
+      color: var(--brown);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.35);
+      transition: all 0.2s;
+    }
+    .print-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SETUP PANEL (hidden when printing)
+══════════════════════════════════════ -->
+<div class="setup-panel no-print">
+  <h2>⚙️ Setup Your Google Review QR Code</h2>
+  <p>Enter your Google Review URL below. Once set, all QR codes on this page will update automatically. Print the page to get physical cards to hand to clients.</p>
+
+  <div class="steps">
+    <h4>📍 How to get your Google Review URL</h4>
+    <ol>
+      <li>Go to <a href="https://business.google.com" target="_blank">business.google.com</a> and sign in</li>
+      <li>Select <strong>Greg Patisserie</strong> from your businesses</li>
+      <li>Click <strong>"Ask for Reviews"</strong> or <strong>"Share review form"</strong></li>
+      <li>Copy the short link (looks like: <code>g.page/r/XXXXXXXX/review</code>)</li>
+      <li>Paste it in the field below and click <strong>Update QR Codes</strong></li>
+    </ol>
+  </div>
+
+  <label>Your Google Review URL</label>
+  <input type="url" id="review-url"
+    value="https://www.google.com/maps/search/Greg+Patisserie+1597+Montée+Monette+Laval+QC"
+    placeholder="https://g.page/r/YOUR_PLACE_ID/review">
+
+  <label style="margin-top:0.5rem">Your Business Name (optional)</label>
+  <input type="text" id="business-name" value="Greg Patisserie" placeholder="Greg Patisserie">
+
+  <button class="update-btn" onclick="updateQR()">🔄 Update QR Codes</button>
+  <span style="font-size:0.78rem;color:#888;margin-left:1rem">QR codes update instantly</span>
+</div>
+
+<!-- ══════════════════════════════════════
+     PORTRAIT CARDS (print 2-up)
+══════════════════════════════════════ -->
+<div class="section-label-outer no-print" style="margin-bottom:0.3rem">📇 Portrait Cards — Print &amp; Cut</div>
+<div class="cards-grid">
+
+  <!-- Card 1: French -->
+  <div class="card">
+    <div class="card-brand">Greg Patisserie</div>
+    <div class="card-tagline">Pâtisseries Artisanales · Laval, QC</div>
+    <div class="gold-divider"></div>
+    <div class="card-headline">Vous avez aimé votre expérience?</div>
+    <div class="card-sub">Partagez votre avis sur Google — ça nous aide énormément!</div>
+    <div class="qr-box">
+      <img id="qr-img-fr" src="" alt="QR Code Google Review Greg Patisserie">
+    </div>
+    <div class="stars">★★★★★</div>
+    <div class="card-cta">Scannez pour laisser un avis</div>
+    <div class="gold-divider"></div>
+    <div class="card-url">www.patisseriegregory.ca · (514) 884-8463</div>
+  </div>
+
+  <!-- Card 2: English -->
+  <div class="card">
+    <div class="card-brand">Greg Patisserie</div>
+    <div class="card-tagline">Artisan Bakery · Laval, QC</div>
+    <div class="gold-divider"></div>
+    <div class="card-headline">Enjoyed your experience?</div>
+    <div class="card-sub">Leave us a Google review — it means the world to us!</div>
+    <div class="qr-box">
+      <img id="qr-img-en" src="" alt="Google Review QR Code Greg Patisserie">
+    </div>
+    <div class="stars">★★★★★</div>
+    <div class="card-cta">Scan to leave a review</div>
+    <div class="gold-divider"></div>
+    <div class="card-url">www.patisseriegregory.ca · (514) 884-8463</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     TABLE TENT (landscape — counter display)
+══════════════════════════════════════ -->
+<div class="section-label-outer no-print" style="margin-bottom:0.3rem">🪧 Counter Card / Table Tent</div>
+<div class="tent-card">
+  <div class="tent-qr">
+    <img id="qr-img-tent" src="" alt="Google Review QR">
+  </div>
+  <div class="tent-text">
+    <div class="brand">Greg Patisserie</div>
+    <div class="headline">Vous avez aimé? Laissez un avis Google!</div>
+    <div class="sub">Enjoyed your pastry? Share your experience · Scannez le code QR</div>
+    <div class="stars">★★★★★</div>
+  </div>
+</div>
+
+<div class="print-btn-wrap no-print">
+  <button class="print-btn" onclick="window.print()">🖨️ Print All Cards</button>
+  <p style="margin-top:0.6rem;font-size:0.78rem;color:#888">Tip: Print on cardstock, laminate, and cut for best results</p>
+</div>
+
+<div class="print-note">
+  Greg Patisserie · www.patisseriegregory.ca · (514) 884-8463 · gregpatisserie@gmail.com
+</div>
+
+<script>
+  const DEFAULT_URL = "https://www.google.com/maps/search/Greg+Patisserie+1597+Mont%C3%A9e+Monette+Laval+QC";
+
+  function getQRUrl(targetUrl) {
+    const encoded = encodeURIComponent(targetUrl || DEFAULT_URL);
+    return `https://quickchart.io/qr?text=${encoded}&size=200&margin=1&dark=2C1810&light=FFFFFF`;
+  }
+
+  function updateQR() {
+    const url = document.getElementById('review-url')?.value || DEFAULT_URL;
+    const imgs = ['qr-img-fr', 'qr-img-en', 'qr-img-tent'];
+    imgs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.src = getQRUrl(url);
+    });
+  }
+
+  // Init on load
+  window.addEventListener('load', updateQR);
+</script>
+
+</body>
+</html>

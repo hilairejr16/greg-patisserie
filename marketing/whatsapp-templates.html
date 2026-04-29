@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greg Patisserie – WhatsApp Marketing Templates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #2C1810;
+      --gold: #D4AF37;
+      --gold-light: #F0D060;
+      --cream: #FFF8DC;
+      --linen: #FAF0E6;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--linen);
+      color: #333;
+      padding: 2rem;
+    }
+    @media print {
+      body { background: white; padding: 1rem; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* Header */
+    .page-header {
+      background: var(--brown);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 2.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .page-header p { color: rgba(255,248,220,0.7); font-size: 0.9rem; }
+
+    /* Section */
+    .section { margin-bottom: 2.5rem; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--brown);
+      border-left: 4px solid var(--gold);
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .audience-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Message card */
+    .message-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 900px) { .message-wrap { grid-template-columns: 1fr; } }
+
+    .message-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(44,24,16,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    .message-card-header {
+      background: var(--brown);
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .message-card-header span {
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .lang-tag {
+      background: rgba(212,175,55,0.2);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 50px;
+      padding: 2px 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .message-body {
+      padding: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: #333;
+      white-space: pre-line;
+      background: #f9f6f1;
+      min-height: 180px;
+      border-bottom: 1px solid #e8ddd4;
+      cursor: text;
+      user-select: all;
+    }
+    .message-footer {
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .copy-btn {
+      background: var(--gold);
+      color: var(--brown);
+      border: none;
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: var(--gold-light); }
+    .copy-btn.copied { background: #4CAF50; color: white; }
+    .wa-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .wa-btn:hover { background: #1da851; }
+
+    /* Tips box */
+    .tips-box {
+      background: linear-gradient(135deg, var(--brown), #3d1f14);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-top: 2.5rem;
+      color: var(--cream);
+    }
+    .tips-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .tips-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .tips-box li { font-size: 0.88rem; color: rgba(255,248,220,0.85); }
+    .tips-box li::before { content: "✦ "; color: var(--gold); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(212,175,55,0.3);
+      margin: 2rem 0;
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      color: var(--brown);
+      border: none;
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+
+<div class="page-header">
+  <h1>Greg Patisserie</h1>
+  <p>WhatsApp Marketing Templates · Modèles de messages marketing</p>
+  <p style="margin-top:0.4rem;font-size:0.8rem;color:rgba(255,248,220,0.5)">Click "Copy" then paste directly into WhatsApp · Cliquez "Copier" puis collez dans WhatsApp</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     1. EXISTING CLIENTS / CLIENTS FIDÈLES
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">1 · Existing Clients — Clients Fidèles</div>
+  <div class="message-wrap">
+
+    <!-- FR -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>💛 Message de fidélité</span>
+        <span class="lang-tag">🇫🇷 FRANÇAIS</span>
+      </div>
+      <div class="message-body" id="msg-fr-existing">Bonjour [Prénom] 👋
+
+J'espère que vous allez bien! C'est Gregory de Greg Patisserie 🎂
+
+Je voulais prendre un moment pour vous remercier de votre fidélité — vous faites partie de la famille Greg Patisserie et ça compte énormément pour moi! 🙏
+
+🎁 En guise de remerciement, je vous offre *10% de rabais* sur votre prochaine commande. Mentionnez simplement ce message lors de votre commande.
+
+🍰 Nos nouveautés du moment :
+• Gâteau Mangue-Passion ✨
+• Cupcakes Coco-Rhum
+• Biscuits décorés sur mesure
+
+Commandez facilement en ligne :
+🌐 www.patisseriegregory.ca
+
+Ou répondez directement à ce message — je suis toujours disponible! 😊
+
+Merci encore pour votre confiance 💛
+— Gregory
+📞 (514) 884-8463</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-fr-existing', this)">📋 Copier</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Ouvrir WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>💛 Loyalty message</span>
+        <span class="lang-tag">🇨🇦 ENGLISH</span>
+      </div>
+      <div class="message-body" id="msg-en-existing">Hello [First Name] 👋
+
+Hope you're doing well! This is Gregory from Greg Patisserie 🎂
+
+I just wanted to take a moment to thank you for your loyalty — you're part of the Greg Patisserie family and that means the world to me! 🙏
+
+🎁 As a token of my appreciation, I'm offering you *10% off* your next order. Just mention this message when you order.
+
+🍰 What's new this month:
+• Mango-Passion Cake ✨
+• Coconut-Rum Cupcakes
+• Custom Decorated Cookies
+
+Order easily online:
+🌐 www.patisseriegregory.ca
+
+Or reply to this message directly — I'm always available! 😊
+
+Thank you so much for your trust 💛
+— Gregory
+📞 (514) 884-8463</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-en-existing', this)">📋 Copy</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Open WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     2. NEW CLIENTS / NOUVEAUX CLIENTS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">2 · New Clients — Nouveaux Clients</div>
+  <div class="message-wrap">
+
+    <!-- FR -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>🌟 Message de bienvenue</span>
+        <span class="lang-tag">🇫🇷 FRANÇAIS</span>
+      </div>
+      <div class="message-body" id="msg-fr-new">Bonjour! 👋
+
+Je me présente — je suis *Gregory Olivier*, pâtissier artisan à Laval, QC 🎂
+
+Chez *Greg Patisserie*, je crée des pâtisseries sur mesure pour toutes vos occasions spéciales :
+
+🎂 Gâteaux personnalisés
+🧁 Cupcakes artisanaux
+🍪 Biscuits décorés
+🍽️ Traiteur pour événements
+
+✅ Ce qui nous distingue :
+• Fait maison avec ingrédients premium
+• Saveurs haïtiennes et caribéennes authentiques
+• Livraison à Laval et Montréal
+• Commande en ligne disponible 24h/24
+
+🎁 *Offre de bienvenue* : 10% de rabais sur votre première commande!
+
+Découvrez notre menu complet :
+🌐 www.patisseriegregory.ca
+
+Je serais ravi de créer quelque chose de spécial pour vous! 🌟
+
+— Gregory
+📞 (514) 884-8463
+📧 gregpatisserie@gmail.com</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-fr-new', this)">📋 Copier</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Ouvrir WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>🌟 Welcome message</span>
+        <span class="lang-tag">🇨🇦 ENGLISH</span>
+      </div>
+      <div class="message-body" id="msg-en-new">Hello! 👋
+
+Let me introduce myself — I'm *Gregory Olivier*, artisan pâtissier based in Laval, QC 🎂
+
+At *Greg Patisserie*, I create custom pastries for all your special occasions:
+
+🎂 Custom Cakes
+🧁 Artisan Cupcakes
+🍪 Decorated Cookies
+🍽️ Catering for Events
+
+✅ What makes us different:
+• Handmade with premium ingredients
+• Authentic Haitian & Caribbean flavors
+• Delivery to Laval & Greater Montreal
+• Online ordering available 24/7
+
+🎁 *Welcome offer*: 10% off your first order!
+
+Explore our full menu:
+🌐 www.patisseriegregory.ca
+
+I'd love to create something special for you! 🌟
+
+— Gregory
+📞 (514) 884-8463
+📧 gregpatisserie@gmail.com</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-en-new', this)">📋 Copy</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Open WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     3. CORPORATE BUSINESSES / ENTREPRISES
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">3 · Corporate Businesses — Entreprises</div>
+  <div class="message-wrap">
+
+    <!-- FR -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>🏢 Proposition corporative</span>
+        <span class="lang-tag">🇫🇷 FRANÇAIS</span>
+      </div>
+      <div class="message-body" id="msg-fr-corp">Bonjour [Nom / Entreprise],
+
+Je me nomme *Gregory Olivier*, fondateur de *Greg Patisserie* — pâtisserie artisanale à Laval, QC.
+
+Je me spécialise dans les services traiteur pour événements corporatifs et j'aimerais beaucoup collaborer avec *[Nom de l'entreprise]* pour vos prochains événements.
+
+🏢 *Ce que nous offrons aux entreprises :*
+• Gâteaux personnalisés avec votre logo
+• Service de desserts professionnel (réunions, lancements, fêtes)
+• Coffrets cadeaux pour vos clients (biscuits, cupcakes, assortiments)
+• Commandes en volume avec emballage sur mesure
+• Livraison partout à Laval et Grand Montréal
+
+✅ *Pourquoi nos clients corporatifs nous font confiance :*
+• Livraison fiable et ponctuelle
+• Présentation soignée et professionnelle
+• Ingrédients premium
+• Service bilingue (FR/EN)
+• Flexible : de 10 à 500+ personnes
+
+J'adorerais discuter de comment Greg Patisserie peut rehausser votre prochain événement.
+
+📞 Disponible pour un appel rapide : (514) 884-8463
+🌐 www.patisseriegregory.ca/catering
+📧 gregpatisserie@gmail.com
+
+— Gregory Olivier
+Fondateur · Greg Patisserie</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-fr-corp', this)">📋 Copier</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Ouvrir WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>🏢 Corporate proposal</span>
+        <span class="lang-tag">🇨🇦 ENGLISH</span>
+      </div>
+      <div class="message-body" id="msg-en-corp">Good day [Name / Company],
+
+My name is *Gregory Olivier*, founder of *Greg Patisserie* — an artisan bakery based in Laval, QC.
+
+I specialize in dessert catering for corporate events and would love to partner with *[Company Name]* for your upcoming occasions.
+
+🏢 *What we offer businesses:*
+• Branded cakes featuring your company logo
+• Professional dessert service (meetings, launches, parties)
+• Corporate gift boxes (cookies, cupcakes, assorted sweets)
+• Bulk orders with custom packaging
+• Delivery throughout Laval & Greater Montreal
+
+✅ *Why our corporate clients trust us:*
+• Reliable, on-time delivery
+• Professional presentation
+• Premium quality ingredients
+• Bilingual service (FR/EN)
+• Flexible: 10 to 500+ guests
+
+I'd love to discuss how Greg Patisserie can elevate your next event.
+
+📞 Available for a quick call: (514) 884-8463
+🌐 www.patisseriegregory.ca/catering
+📧 gregpatisserie@gmail.com
+
+— Gregory Olivier
+Founder · Greg Patisserie</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-en-corp', this)">📋 Copy</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Open WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     4. SMALL BUSINESSES / PETITES ENTREPRISES
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">4 · Small Businesses — Petites Entreprises</div>
+  <div class="message-wrap">
+
+    <!-- FR -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>💼 Offre petite entreprise</span>
+        <span class="lang-tag">🇫🇷 FRANÇAIS</span>
+      </div>
+      <div class="message-body" id="msg-fr-smb">Bonjour [Prénom / Nom de l'entreprise]! 👋
+
+Je suis *Gregory* de *Greg Patisserie* 🎂 — pâtisserie artisanale à Laval, QC.
+
+Vous organisez un événement pour votre équipe ou vos clients? Nous pouvons vous aider! 🎉
+
+*Greg Patisserie offre des services traiteur pour :*
+🎉 Lancements de produit
+🍰 Célébrations d'équipe
+🎁 Coffrets cadeaux pour clients
+☕ Réunions et formations
+🏆 Fêtes de fin d'année
+
+*Nos forfaits débutent à partir de 10 personnes* — parfait pour les PME!
+
+✅ Avantages :
+• Livraison incluse (Laval & Montréal)
+• Personnalisation selon votre budget
+• Présentation professionnelle
+• Service en français et en anglais
+
+Demandez un devis gratuit en ligne :
+🌐 www.patisseriegregory.ca
+📞 (514) 884-8463
+📧 gregpatisserie@gmail.com
+
+— Gregory Olivier
+Pâtissier Artisan · Greg Patisserie
+📍 Laval, QC</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-fr-smb', this)">📋 Copier</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Ouvrir WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="message-card">
+      <div class="message-card-header">
+        <span>💼 Small business offer</span>
+        <span class="lang-tag">🇨🇦 ENGLISH</span>
+      </div>
+      <div class="message-body" id="msg-en-smb">Hello [First Name / Business Name]! 👋
+
+This is *Gregory* from *Greg Patisserie* 🎂 — artisan bakery in Laval, QC.
+
+Are you planning an event for your team or clients? We can help! 🎉
+
+*Greg Patisserie caters for small businesses:*
+🎉 Product launches
+🍰 Team celebrations
+🎁 Client gift boxes
+☕ Meetings & training sessions
+🏆 Year-end parties
+
+*Packages starting from just 10 people* — perfect for small and medium businesses!
+
+✅ Why choose us:
+• Delivery included (Laval & Montreal)
+• Customized to your budget
+• Professional presentation
+• Bilingual service (FR/EN)
+
+Request a free quote online:
+🌐 www.patisseriegregory.ca
+📞 (514) 884-8463
+📧 gregpatisserie@gmail.com
+
+— Gregory Olivier
+Artisan Pâtissier · Greg Patisserie
+📍 Laval, QC</div>
+      <div class="message-footer">
+        <button class="copy-btn" onclick="copyMsg('msg-en-smb', this)">📋 Copy</button>
+        <a class="wa-btn" href="https://wa.me/new" target="_blank">💬 Open WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tips Box -->
+<div class="tips-box no-print">
+  <h3>💡 Tips for Best Results · Conseils pour de meilleurs résultats</h3>
+  <ul>
+    <li>Always personalize with the client's first name — it dramatically increases response rates</li>
+    <li>Send on Tuesday–Thursday between 10am–12pm or 6pm–8pm for best open rates</li>
+    <li>Add a seasonal twist: mention Mother's Day, Christmas, or upcoming holidays</li>
+    <li>For existing clients, attach a photo of a recent creation to make it visual</li>
+    <li>Follow up once after 3 days if no response — keep it brief and friendly</li>
+    <li>For corporate clients, call first, then follow up with this WhatsApp message</li>
+    <li>Replace <em>[Prénom]</em> / <em>[First Name]</em> with the actual name before sending</li>
+    <li>Replace <em>[Nom de l'entreprise]</em> / <em>[Company Name]</em> with the actual business name</li>
+  </ul>
+</div>
+
+<script>
+function copyMsg(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copié!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback
+    const el = document.getElementById(id);
+    const range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    btn.textContent = '✓ Copié!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = id.includes('fr') ? '📋 Copier' : '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

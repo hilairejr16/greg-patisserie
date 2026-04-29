@@ -23,6 +23,7 @@ const dirsToCopy = [
   'js',
   'images',
   'flyer',
+  'marketing',
 ];
 
 // Ensure www/ exists
