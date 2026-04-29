@@ -38,9 +38,9 @@ const FORMSPREE = {
    2. Create template with variables below → note Template ID
    3. Account → API Keys → note Public Key               */
 const EMAILJS_CONFIG = {
-  serviceId:  'service_xxxxxxx',   // ← your EmailJS Service ID
-  templateId: 'template_xxxxxxx',  // ← your EmailJS Template ID
-  publicKey:  'xxxxxxxxxxxx',      // ← your EmailJS Public Key
+  serviceId:  'service_5edh2yo',   // GP - Gmail service
+  templateId: 'template_2ug2ubs',  // GP - Order Confirmation template
+  publicKey:  'SDLmzHeI8j7EqDb-Z', // GP - EmailJS Public Key
 };
 
 /* --- Twilio SMS (text message to customer) ---

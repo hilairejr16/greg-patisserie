@@ -299,7 +299,7 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Item | Status | Notes |
 |------|--------|-------|
 | Formspree form IDs | ✅ Done | mojyglwr / xnjlezzj / xaqarbbj / mlgaqllw |
-| EmailJS setup | ⚠️ Pending | Need Service ID, Template ID, Public Key |
+| EmailJS setup | ✅ Done | service_5edh2yo / template_2ug2ubs / SDLmzHeI8j7EqDb-Z |
 | Twilio SMS Worker | ⚠️ Pending | Free account + deploy worker + set TWILIO_WORKER_URL |
 | Real gallery photos | ⚠️ Pending | Send to gregpatisserie@gmail.com or drop in images/gallery/ |
 | Codemagic (mobile CI) | ⚠️ Pending | Sign up at codemagic.io |
@@ -338,5 +338,6 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Apr 2026 | SW cache v5 → v7, cache-bust ?v=4 → ?v=5 | — |
 | Apr 2026 | Monthly maintenance task updated with full new checklist | — |
 | Apr 2026 | PayPal: PAYPAL_ME constant added, payment instruction updated, "Pay Now with PayPal" button in order modal | — |
+| Apr 2026 | EmailJS: all 3 keys configured — receipt emails to customers now live | — |
 | Apr 2026 | Marketing: whatsapp-templates.html + google-review-qr.html added to marketing/ | 4934ef1 |
 | Apr 2026 | Canva "Greg Patisserie Marketing" folder created (ID: FAHIRnskVcY) | — |
