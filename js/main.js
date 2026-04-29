@@ -195,15 +195,23 @@ function initNavbar() {
   const ham = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('.nav-mobile');
   const mobileOverlay = document.querySelector('.nav-overlay');
+
+  function openMobileNav() {
+    mobileNav?.classList.add('open');
+    if (mobileOverlay) mobileOverlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    mobileNav?.classList.remove('open');
+    if (mobileOverlay) mobileOverlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
   if (ham && mobileNav) {
     ham.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      mobileOverlay?.classList.toggle('open');
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
-    mobileOverlay?.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      mobileOverlay.classList.remove('open');
-    });
+    mobileOverlay?.addEventListener('click', closeMobileNav);
   }
 
   // Active link based on scroll
@@ -536,13 +544,14 @@ function openQuoteModal(eventType) {
     labelEl.textContent  = eventType;
     inputEl.value        = eventType;
     selectWrap.style.display = 'none';
+    if (selectEl) selectEl.disabled = true; // exclude from validation when hidden
   } else {
     // Opened from generic button — show select
     iconEl.textContent   = '🎉';
     labelEl.textContent  = 'Select below';
     inputEl.value        = '';
     selectWrap.style.display = 'block';
-    if (selectEl) selectEl.value = '';
+    if (selectEl) { selectEl.disabled = false; selectEl.value = ''; }
   }
 
   modal.style.display = 'flex';

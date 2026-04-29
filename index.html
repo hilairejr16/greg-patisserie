@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 
   <!-- JSON-LD Structured Data (Google rich results) -->
   <script type="application/ld+json">
@@ -141,12 +141,13 @@
 <!-- Mobile Nav Overlay -->
 <div class="nav-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1400;display:none"></div>
 <nav class="nav-mobile">
-  <a href="#hero"     data-i18n="nav_home"     onclick="this.closest('.nav-mobile').classList.remove('open')">Accueil</a>
-  <a href="#menu"     data-i18n="nav_menu"     onclick="this.closest('.nav-mobile').classList.remove('open')">Notre Carte</a>
-  <a href="#order"    data-i18n="nav_order"    onclick="this.closest('.nav-mobile').classList.remove('open')">Commander</a>
-  <a href="#catering" data-i18n="nav_catering" onclick="this.closest('.nav-mobile').classList.remove('open')">Traiteur</a>
-  <a href="#about"    data-i18n="nav_about"    onclick="this.closest('.nav-mobile').classList.remove('open')">À propos</a>
-  <a href="#contact"  data-i18n="nav_contact"  onclick="this.closest('.nav-mobile').classList.remove('open')">Contact</a>
+  <a href="#hero"      data-i18n="nav_home"     onclick="this.closest('.nav-mobile').classList.remove('open')">Accueil</a>
+  <a href="#menu"      data-i18n="nav_menu"     onclick="this.closest('.nav-mobile').classList.remove('open')">Notre Carte</a>
+  <a href="#order"     data-i18n="nav_order"    onclick="this.closest('.nav-mobile').classList.remove('open')">Commander</a>
+  <a href="#catering"  data-i18n="nav_catering" onclick="this.closest('.nav-mobile').classList.remove('open')">Traiteur</a>
+  <a href="#gallery"   onclick="this.closest('.nav-mobile').classList.remove('open')">Galerie</a>
+  <a href="#about"     data-i18n="nav_about"    onclick="this.closest('.nav-mobile').classList.remove('open')">À propos</a>
+  <a href="#contact"   data-i18n="nav_contact"  onclick="this.closest('.nav-mobile').classList.remove('open')">Contact</a>
   <div style="margin-top:2rem;display:flex;gap:8px">
     <button class="lang-btn" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="en">EN</button>
@@ -470,37 +471,37 @@
         <div class="catering-icon">🎂</div>
         <h3 data-i18n="ev_birthday">Fêtes d'Anniversaire</h3>
         <p>Custom cakes, cupcake towers, cookie platters</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Wedding Reception')" style="cursor:pointer">
         <div class="catering-icon">💍</div>
         <h3 data-i18n="ev_wedding">Réceptions de Mariage</h3>
         <p>Multi-tier wedding cakes, dessert tables, petit fours</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Baby Shower')" style="cursor:pointer">
         <div class="catering-icon">👶</div>
         <h3 data-i18n="ev_baby">Baby Showers</h3>
         <p>Themed cakes, gender reveal cakes, cupcake displays</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Engagement / Fiançailles')" style="cursor:pointer">
         <div class="catering-icon">💒</div>
         <h3 data-i18n="ev_fiancee">Fiançailles</h3>
         <p>Elegant engagement cakes, macaron towers</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Corporate Event')" style="cursor:pointer">
         <div class="catering-icon">🏢</div>
         <h3 data-i18n="ev_corporate">Événements Corporatifs</h3>
         <p>Branded cakes, large-scale dessert service</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Custom Event')" style="cursor:pointer">
         <div class="catering-icon">🎉</div>
         <h3 data-i18n="ev_custom">Événements Personnalisés</h3>
         <p>Graduations, holiday parties, cultural events</p>
-        <button class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
       </div>
     </div>
 
@@ -912,7 +913,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span data-i18n="footer_rights">© 2025 Greg Patisserie. Tous droits réservés.</span>
+      <span data-i18n="footer_rights">© 2026 Greg Patisserie. Tous droits réservés.</span>
       <span data-i18n="footer_owner">Gregory Olivier, Propriétaire</span>
       <a href="privacy.html" style="color:rgba(255,255,255,.5);font-size:.78rem">Privacy Policy</a>
     </div>
@@ -1101,8 +1102,8 @@
 </script>
 
 <!-- Scripts -->
-<script src="js/i18n.js?v=4"></script>
-<script src="js/main.js?v=4"></script>
+<script src="js/i18n.js?v=5"></script>
+<script src="js/main.js?v=5"></script>
 <script>
   // Additional inline init
   document.addEventListener('DOMContentLoaded', () => {
@@ -1116,19 +1117,7 @@
       });
     });
 
-    // Mobile nav overlay visibility
-    const overlay = document.querySelector('.nav-overlay');
-    const ham = document.querySelector('.hamburger');
-    if (overlay && ham) {
-      overlay.style.display = 'none';
-      ham.addEventListener('click', () => {
-        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-      });
-      overlay.addEventListener('click', () => {
-        overlay.style.display = 'none';
-        document.querySelector('.nav-mobile')?.classList.remove('open');
-      });
-    }
+    // (year kept current via i18n.js strings — updated by monthly maintenance)
 
     // Set min date for order form
     const dateInput = document.getElementById('date');

@@ -94,7 +94,7 @@ const translations = {
     footer_links:  'Quick Links',
     footer_services: 'Services',
     footer_contact: 'Contact',
-    footer_rights: '© 2025 Greg Patisserie. All rights reserved.',
+    footer_rights: '© 2026 Greg Patisserie. All rights reserved.',
     footer_owner:  'Gregory Olivier, Owner',
 
     // Misc
@@ -187,7 +187,7 @@ const translations = {
     footer_links:  'Liens Rapides',
     footer_services: 'Services',
     footer_contact: 'Contact',
-    footer_rights: '© 2025 Greg Patisserie. Tous droits réservés.',
+    footer_rights: '© 2026 Greg Patisserie. Tous droits réservés.',
     footer_owner:  'Gregory Olivier, Propriétaire',
 
     loading:       'Chargement…',
@@ -279,7 +279,7 @@ const translations = {
     footer_links:  'Lyen Rapid',
     footer_services: 'Sèvis',
     footer_contact: 'Kontakte',
-    footer_rights: '© 2025 Greg Patisserie. Tout dwa rezève.',
+    footer_rights: '© 2026 Greg Patisserie. Tout dwa rezève.',
     footer_owner:  'Gregory Olivier, Propriyetè',
 
     loading:       'Chajman…',
@@ -371,7 +371,7 @@ const translations = {
     footer_links:  'Enlaces Rápidos',
     footer_services: 'Servicios',
     footer_contact: 'Contacto',
-    footer_rights: '© 2025 Greg Patisserie. Todos los derechos reservados.',
+    footer_rights: '© 2026 Greg Patisserie. Todos los derechos reservados.',
     footer_owner:  'Gregory Olivier, Propietario',
 
     loading:       'Cargando…',
