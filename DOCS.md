@@ -304,7 +304,7 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Real gallery photos | ⚠️ Pending | Send to gregpatisserie@gmail.com or drop in images/gallery/ |
 | Codemagic (mobile CI) | ⚠️ Pending | Sign up at codemagic.io |
 | Android keystore | ⚠️ Pending | Generate with keytool before Play Store submission |
-| PayPal.me link | ⚠️ Pending | Create paypal.me/gregpatisserie |
+| PayPal.me link | ⚠️ Create link | Go to paypal.com/me → choose `gregpatisserie` · Code wired: `PAYPAL_ME` constant in main.js · "Pay with PayPal" button auto-shows in order modal |
 | patisseriegregory.ca DNS | ⚠️ Add custom domain in CF Pages dashboard | Workers & Pages → greg-patisserie → Custom Domains → Add www.patisseriegregory.ca |
 
 ---
@@ -337,3 +337,6 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Apr 2026 | Copyright year 2025 → 2026 in all 4 languages | — |
 | Apr 2026 | SW cache v5 → v7, cache-bust ?v=4 → ?v=5 | — |
 | Apr 2026 | Monthly maintenance task updated with full new checklist | — |
+| Apr 2026 | PayPal: PAYPAL_ME constant added, payment instruction updated, "Pay Now with PayPal" button in order modal | — |
+| Apr 2026 | Marketing: whatsapp-templates.html + google-review-qr.html added to marketing/ | 4934ef1 |
+| Apr 2026 | Canva "Greg Patisserie Marketing" folder created (ID: FAHIRnskVcY) | — |

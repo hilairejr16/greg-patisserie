@@ -52,6 +52,11 @@ const TWILIO_WORKER_URL = ''; // ← your Cloudflare Worker URL e.g. https://gp-
 /* Gregory's WhatsApp number (do not change) */
 const OWNER_WHATSAPP = '15148848463';
 
+/* --- PayPal.me (customer pays directly after order) ---
+   Create at: https://www.paypal.com/paypalme/
+   Recommended link: paypal.me/gregpatisserie              */
+const PAYPAL_ME = 'https://www.paypal.me/gregpatisserie';
+
 /* ---------- Products Data ---------- */
 const products = [
   // Cakes
@@ -396,7 +401,7 @@ www.patisseriegregory.ca`;
       );
       // Show success + open WhatsApp after short delay
       if (formspreeOk) {
-        showOrderSuccessModal(order, receiptText);
+        showOrderSuccessModal(order, receiptText, cartTotal);
         setTimeout(() => {
           window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${waMsg}`, '_blank');
         }, 1500);
@@ -425,7 +430,7 @@ function showPaymentInstructions(method) {
     interac: `<strong>Interac e-Transfer:</strong> Send payment to phone number <em>(514) 884-8463</em>. Include your name and order details in the message. We will confirm your order upon receipt.`,
     credit: `<strong>Credit Card:</strong> You will be redirected to our secure Stripe payment page after order confirmation.`,
     debit: `<strong>Debit / Chequing:</strong> In-person debit accepted at pickup, or e-Transfer to our account. Details sent by email.`,
-    paypal: `<strong>PayPal:</strong> A PayPal payment request will be sent to your email. Complete payment to confirm your order.`,
+    paypal: `<strong>PayPal:</strong> After submitting your order, click the <strong>"Pay with PayPal"</strong> button to complete payment instantly at <a href="${PAYPAL_ME}" target="_blank" rel="noopener" style="color:#003087;font-weight:600">paypal.me/gregpatisserie</a>.`,
     cash: `<strong>Cash on Pickup:</strong> Pay when you collect your order at our location in Laval, QC.`,
   };
 
@@ -434,7 +439,7 @@ function showPaymentInstructions(method) {
 }
 
 /* ---------- Order Success Modal ---------- */
-function showOrderSuccessModal(order, receiptText) {
+function showOrderSuccessModal(order, receiptText, cartTotal) {
   // Remove any existing modal
   document.getElementById('order-success-modal')?.remove();
 
@@ -502,6 +507,25 @@ function showOrderSuccessModal(order, receiptText) {
                       font-size:.75rem;color:#5C3317;white-space:pre-wrap;line-height:1.6;
                       font-family:'Courier New',monospace;overflow-x:auto"></pre>
         </details>
+
+        <!-- PayPal button (only shown when PayPal was selected) -->
+        ${order.payment === 'paypal' ? `
+        <div style="margin-bottom:1rem">
+          <a href="${PAYPAL_ME}${cartTotal && cartTotal !== 'Pricing will be confirmed by Gregory' ? '/' + cartTotal.replace(/[^0-9.]/g,'') : ''}"
+             target="_blank" rel="noopener"
+             style="display:flex;align-items:center;justify-content:center;gap:.6rem;
+                    background:#003087;color:#fff;border-radius:50px;padding:1rem 1.5rem;
+                    font-size:.9rem;font-weight:700;text-decoration:none;
+                    font-family:'Montserrat',sans-serif;box-shadow:0 4px 15px rgba(0,48,135,.35)">
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png"
+                 alt="PayPal" style="height:20px;width:20px;border-radius:3px">
+            Pay Now with PayPal
+            ${cartTotal && cartTotal !== 'Pricing will be confirmed by Gregory' ? `<span style="opacity:.75;font-size:.78rem">· ${cartTotal}</span>` : ''}
+          </a>
+          <p style="text-align:center;font-size:.72rem;color:#888;margin:.5rem 0 0;font-family:'Montserrat',sans-serif">
+            Secure payment via PayPal · Order confirmed upon receipt
+          </p>
+        </div>` : ''}
 
         <!-- Action buttons -->
         <div style="display:flex;gap:.75rem;flex-wrap:wrap">
