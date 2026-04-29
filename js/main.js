@@ -3,6 +3,20 @@
    ============================================================ */
 
 /* ============================================================
+   SECURITY HELPERS
+   ============================================================ */
+
+/** Escape user-supplied strings before inserting into innerHTML */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/* ============================================================
    NOTIFICATION CONFIG
    Fill in each service after signing up (all free tiers available)
    ============================================================ */
@@ -447,7 +461,7 @@ function showOrderSuccessModal(order, receiptText) {
       <!-- Body -->
       <div style="padding:1.8rem">
         <p style="color:#5C3317;font-size:.95rem;margin-bottom:1.2rem;line-height:1.7">
-          Hi <strong>${order.name}</strong>! Your order has been submitted. Gregory will confirm
+          Hi <strong>${escapeHtml(order.name)}</strong>! Your order has been submitted. Gregory will confirm
           within <strong>24 hours</strong> by email and WhatsApp.
         </p>
 
@@ -464,7 +478,7 @@ function showOrderSuccessModal(order, receiptText) {
             </div>
             <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
               <span style="color:#4CAF50;font-size:1rem">✓</span>
-              <span>📨 Receipt sent to <strong>${order.email}</strong></span>
+              <span>📨 Receipt sent to <strong>${escapeHtml(order.email)}</strong></span>
             </div>
             <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
               <span style="color:#25D366;font-size:1rem">✓</span>
@@ -473,7 +487,7 @@ function showOrderSuccessModal(order, receiptText) {
             ${order.phone ? `
             <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
               <span style="color:#4CAF50;font-size:1rem">✓</span>
-              <span>📱 SMS receipt queued to ${order.phone}</span>
+              <span>📱 SMS receipt queued to ${escapeHtml(order.phone)}</span>
             </div>` : ''}
           </div>
         </div>
@@ -484,9 +498,9 @@ function showOrderSuccessModal(order, receiptText) {
                           color:#8B6914;font-weight:600;letter-spacing:.08em">
             VIEW ORDER SUMMARY ▾
           </summary>
-          <pre style="margin:.8rem 0 0;background:#fdf6ee;border-radius:8px;padding:1rem;
+          <pre id="order-receipt-pre" style="margin:.8rem 0 0;background:#fdf6ee;border-radius:8px;padding:1rem;
                       font-size:.75rem;color:#5C3317;white-space:pre-wrap;line-height:1.6;
-                      font-family:'Courier New',monospace;overflow-x:auto">${receiptText}</pre>
+                      font-family:'Courier New',monospace;overflow-x:auto"></pre>
         </details>
 
         <!-- Action buttons -->
@@ -510,6 +524,9 @@ function showOrderSuccessModal(order, receiptText) {
   `;
 
   document.body.appendChild(modal);
+  // Use textContent for receipt to prevent XSS from user-inputted order details
+  const prePre = modal.querySelector('#order-receipt-pre');
+  if (prePre) prePre.textContent = receiptText;
   modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
 }
 

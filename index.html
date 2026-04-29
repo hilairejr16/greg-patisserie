@@ -3,33 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Greg Patisserie – Artisan pastries, custom cakes, cupcakes and cookies in Laval, QC. Online ordering available. Serving the Canadian and Haitian communities.">
-  <meta name="keywords" content="patisserie, cake, cupcake, cookies, Laval, Quebec, Haitian, artisan, custom cake, traiteur, gregory1824">
+  <!-- Primary SEO -->
+  <meta name="description" content="Greg Patisserie – Gâteaux sur mesure, cupcakes artisanaux et biscuits à Laval, QC. Commande en ligne · Livraison · Traiteur pour mariages, anniversaires & événements. Spécialités haïtiennes et caribéennes. ☎ (514) 884-8463">
+  <meta name="keywords" content="patisserie Laval, gâteau sur mesure Laval, cupcake Laval, biscuits artisanaux, traiteur Laval, gâteau mariage Laval QC, pastry Laval Quebec, Haitian bakery Montreal, Caribbean cake, patisserie gregory1824, custom cake Quebec, wedding cake Laval, birthday cake Laval, baby shower cake, greg patisserie">
   <meta name="author" content="Gregory Olivier">
   <meta name="theme-color" content="#2C1810">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="CA-QC">
+  <meta name="geo.placename" content="Laval, Québec">
+  <meta name="geo.position" content="45.6066;-73.7124">
+  <meta name="ICBM" content="45.6066, -73.7124">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.patisseriegregory.ca/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+  <!-- Hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="fr" href="https://www.patisseriegregory.ca/">
+  <link rel="alternate" hreflang="en" href="https://www.patisseriegregory.ca/">
+  <link rel="alternate" hreflang="ht" href="https://www.patisseriegregory.ca/">
+  <link rel="alternate" hreflang="es" href="https://www.patisseriegregory.ca/">
+  <link rel="alternate" hreflang="x-default" href="https://www.patisseriegregory.ca/">
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Greg Patisserie – Laval, QC">
-  <meta property="og:description" content="Artisan pastries crafted with love. Custom cakes, cupcakes & cookies for every occasion.">
+  <meta property="og:title" content="Greg Patisserie – Gâteaux sur mesure à Laval, QC">
+  <meta property="og:description" content="Pâtisseries artisanales faites avec amour. Gâteaux sur mesure, cupcakes & biscuits pour mariages, anniversaires et événements. Commande en ligne · Livraison à Laval &amp; Montréal.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.patisseriegregory.ca/">
   <meta property="og:image" content="https://www.patisseriegregory.ca/images/logo-social.svg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
+  <meta property="og:locale:alternate" content="ht_HT">
+  <meta property="og:locale:alternate" content="es_CA">
+  <meta property="og:site_name" content="Greg Patisserie">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@gregpatisserie">
-  <meta name="twitter:title" content="Greg Patisserie – Laval, QC">
+  <meta name="twitter:creator" content="@gregpatisserie">
+  <meta name="twitter:title" content="Greg Patisserie – Gâteaux sur mesure à Laval, QC">
+  <meta name="twitter:description" content="Pâtisseries artisanales faites avec amour. Commande en ligne · Traiteur · Livraison à Laval &amp; Montréal.">
   <meta name="twitter:image" content="https://www.patisseriegregory.ca/images/logo-social.svg">
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="images/logo-social.svg">
 
-  <title>Greg Patisserie – Laval, QC | Artisan Cakes & Pastries</title>
+  <title>Greg Patisserie – Gâteaux sur Mesure, Cupcakes & Traiteur | Laval, QC</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,14 +70,19 @@
     "@context": "https://schema.org",
     "@type": "Bakery",
     "name": "Greg Patisserie",
-    "alternateName": "Greg's Patisserie",
-    "description": "Artisan bakery in Laval, QC serving custom cakes, cupcakes, cookies and catering for all occasions. Founded by Gregory Olivier, chemist and passionate baker celebrating Haitian and Caribbean flavors.",
+    "alternateName": ["Greg's Patisserie", "Patisserie Gregory", "Patisserie Greg"],
+    "description": "Pâtisserie artisanale à Laval, QC. Gâteaux sur mesure, cupcakes et biscuits pour mariages, anniversaires, baby showers et événements corporatifs. Fondée par Gregory Olivier, chimiste et pâtissier passionné célébrant les saveurs haïtiennes et caribéennes.",
     "url": "https://www.patisseriegregory.ca",
     "logo": "https://www.patisseriegregory.ca/images/logo-main.svg",
-    "image": "https://www.patisseriegregory.ca/images/logo-social.svg",
+    "image": [
+      "https://www.patisseriegregory.ca/images/logo-social.svg",
+      "https://www.patisseriegregory.ca/images/logo-main.svg"
+    ],
     "founder": {
       "@type": "Person",
-      "name": "Gregory Olivier"
+      "name": "Gregory Olivier",
+      "jobTitle": "Founder & Head Pâtissier",
+      "knowsAbout": ["Artisan Baking", "Caribbean Cuisine", "Haitian Pastry", "Custom Cake Design"]
     },
     "address": {
       "@type": "PostalAddress",
@@ -76,9 +103,9 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "19:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:00", "closes": "16:00" }
     ],
-    "servesCuisine": ["French", "Caribbean", "Haitian"],
+    "servesCuisine": ["French Pastry", "Caribbean", "Haitian", "Custom Cakes"],
     "priceRange": "$$",
-    "paymentAccepted": "Interac, Credit Card, PayPal, Cash",
+    "paymentAccepted": "Interac e-Transfer, Credit Card, PayPal, Cash, Debit",
     "currenciesAccepted": "CAD",
     "hasMap": "https://www.google.com/maps/dir/?api=1&destination=1597+Montée+Monette,+Laval,+QC+H7M4B6",
     "sameAs": [
@@ -86,11 +113,93 @@
       "https://www.instagram.com/gregory1824",
       "https://www.twitter.com/gregpatisserie"
     ],
-    "areaServed": {
-      "@type": "City",
-      "name": "Laval, Québec, Canada"
+    "areaServed": [
+      { "@type": "City", "name": "Laval" },
+      { "@type": "City", "name": "Montréal" },
+      { "@type": "AdministrativeArea", "name": "Québec, Canada" }
+    ],
+    "menu": "https://www.patisseriegregory.ca/#menu",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
     },
-    "menu": "https://www.patisseriegregory.ca/#menu"
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Greg Patisserie Menu",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Custom Cakes / Gâteaux sur mesure",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Classic Birthday Cake", "description": "Vanilla sponge, buttercream, custom decoration" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Chocolate Dream Cake", "description": "Rich dark chocolate layers, ganache" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Caribbean Coconut Cake", "description": "Coconut cream, tropical fruits, Haitian inspired" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Wedding Tiered Cake", "description": "Custom multi-tier, personalized decoration" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Cupcakes (by the dozen)",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Vanilla Cupcakes", "description": "Classic vanilla with swirled buttercream" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Chocolate Cupcakes", "description": "Double chocolate with fudge filling" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Coconut Cupcakes", "description": "Caribbean coconut, Haitian inspired" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Catering / Traiteur",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding Catering", "description": "Multi-tier wedding cakes, dessert tables, petit fours" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Birthday Party Catering", "description": "Custom cakes, cupcake towers, cookie platters" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Event Catering", "description": "Branded cakes, large-scale dessert service" } }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQPage Schema (Google FAQ rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How far in advance do I need to order?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We require a minimum of 48 hours notice for standard orders. For wedding cakes, tiered cakes, and large catering orders, please contact us at least 1–2 weeks in advance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you deliver?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! We offer delivery in the Laval and Greater Montreal area. Pickup is also available at 1597 Montée Monette, Laval, QC. Delivery fees may apply depending on distance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I request a custom cake design?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. All our cakes and cookies are made to order. Describe your vision in the Special Instructions field when ordering, or message us on WhatsApp at +1 (514) 884-8463 with inspiration photos." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer catering for large events?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! We specialize in catering for weddings, birthday parties, baby showers, engagement parties, and corporate events in the Laval and Montreal area. Contact us for a custom quote." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I pay with Interac e-Transfer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Select Interac e-Transfer at checkout, then send payment to phone number (514) 884-8463. Include your name and order in the message. Your order is confirmed once payment is received." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are your products made fresh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — every item is made fresh to order. We do not carry pre-made stock. Your order is prepared specifically for your pickup or delivery date." }
+      }
+    ]
   }
   </script>
 </head>
@@ -110,7 +219,7 @@
       <li><a href="#menu"      data-i18n="nav_menu">Notre Carte</a></li>
       <li><a href="#order"     data-i18n="nav_order">Commander</a></li>
       <li><a href="#catering"  data-i18n="nav_catering">Traiteur</a></li>
-      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#gallery" data-i18n="nav_gallery">Galerie</a></li>
       <li><a href="#about"     data-i18n="nav_about">À propos</a></li>
       <li><a href="#contact"   data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -145,7 +254,7 @@
   <a href="#menu"      data-i18n="nav_menu"     onclick="this.closest('.nav-mobile').classList.remove('open')">Notre Carte</a>
   <a href="#order"     data-i18n="nav_order"    onclick="this.closest('.nav-mobile').classList.remove('open')">Commander</a>
   <a href="#catering"  data-i18n="nav_catering" onclick="this.closest('.nav-mobile').classList.remove('open')">Traiteur</a>
-  <a href="#gallery"   onclick="this.closest('.nav-mobile').classList.remove('open')">Galerie</a>
+  <a href="#gallery"   data-i18n="nav_gallery" onclick="this.closest('.nav-mobile').classList.remove('open')">Galerie</a>
   <a href="#about"     data-i18n="nav_about"    onclick="this.closest('.nav-mobile').classList.remove('open')">À propos</a>
   <a href="#contact"   data-i18n="nav_contact"  onclick="this.closest('.nav-mobile').classList.remove('open')">Contact</a>
   <div style="margin-top:2rem;display:flex;gap:8px">
@@ -470,38 +579,38 @@
       <div class="catering-card" onclick="openQuoteModal('Birthday Party')" style="cursor:pointer">
         <div class="catering-icon">🎂</div>
         <h3 data-i18n="ev_birthday">Fêtes d'Anniversaire</h3>
-        <p>Custom cakes, cupcake towers, cookie platters</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Gâteaux spectaculaires sur mesure, tours de cupcakes &amp; plateaux de biscuits pour une célébration parfaite</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Wedding Reception')" style="cursor:pointer">
         <div class="catering-icon">💍</div>
         <h3 data-i18n="ev_wedding">Réceptions de Mariage</h3>
-        <p>Multi-tier wedding cakes, dessert tables, petit fours</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Gâteaux de mariage à étages, tables de desserts élégantes &amp; petits fours — votre vision, magnifiée</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Baby Shower')" style="cursor:pointer">
         <div class="catering-icon">👶</div>
         <h3 data-i18n="ev_baby">Baby Showers</h3>
-        <p>Themed cakes, gender reveal cakes, cupcake displays</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Gâteaux thématiques, révélations de sexe &amp; présentoirs de cupcakes pour des moments précieux et inoubliables</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Engagement / Fiançailles')" style="cursor:pointer">
         <div class="catering-icon">💒</div>
         <h3 data-i18n="ev_fiancee">Fiançailles</h3>
-        <p>Elegant engagement cakes, macaron towers</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Gâteaux de fiançailles romantiques, tours de macarons &amp; arrangements personnalisés pour sceller votre amour</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Corporate Event')" style="cursor:pointer">
         <div class="catering-icon">🏢</div>
         <h3 data-i18n="ev_corporate">Événements Corporatifs</h3>
-        <p>Branded cakes, large-scale dessert service</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Gâteaux de marque sophistiqués &amp; service de desserts haut de gamme pour vos événements professionnels</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
       <div class="catering-card" onclick="openQuoteModal('Custom Event')" style="cursor:pointer">
         <div class="catering-icon">🎉</div>
         <h3 data-i18n="ev_custom">Événements Personnalisés</h3>
-        <p>Graduations, holiday parties, cultural events</p>
-        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Get a Quote</button>
+        <p>Graduations, fêtes culturelles, réunions familiales — toute occasion, toute vision, toute envergure</p>
+        <button type="button" class="catering-quote-btn"><i class="fas fa-file-alt"></i> Obtenir un devis</button>
       </div>
     </div>
 

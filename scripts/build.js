@@ -13,6 +13,8 @@ const filesToCopy = [
   'sw.js',
   '_headers',
   '_redirects',
+  'sitemap.xml',
+  'robots.txt',
 ];
 
 // Directories to copy recursively

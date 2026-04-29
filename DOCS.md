@@ -113,11 +113,13 @@ Greg Patisserie/
 ├── index.html              ← Main single-page website (all sections)
 ├── privacy.html            ← Privacy policy (PIPEDA / Quebec Law 25)
 ├── manifest.json           ← PWA manifest
-├── sw.js                   ← Service worker (PWA offline cache) — current: v2
+├── sw.js                   ← Service worker (PWA offline cache) — current: v7
+├── sitemap.xml             ← XML sitemap (multilingual hreflang)
+├── robots.txt              ← Search engine crawl rules
 ├── capacitor.config.json   ← Capacitor mobile app config
 ├── package.json            ← Node dependencies + build scripts
 ├── codemagic.yaml          ← Cloud mobile CI/CD config
-├── _headers                ← Cloudflare Pages cache headers
+├── _headers                ← Cloudflare Pages cache + security headers (CSP)
 ├── _redirects              ← Cloudflare Pages URL redirects
 ├── .gitignore
 ├── DOCS.md                 ← This file
@@ -269,7 +271,7 @@ When changing CSS or JS, bump version params in `index.html`:
 <link rel="stylesheet" href="css/styles.css?v=3">
 <script src="js/main.js?v=4">
 ```
-Also bump `sw.js` CACHE_NAME: `greg-patisserie-v2` → `greg-patisserie-v3`
+Also bump `sw.js` CACHE_NAME: `greg-patisserie-v7` → `greg-patisserie-v8` (increment each time)
 
 ### Cloudflare Pages Build Settings
 | Setting | Value |
@@ -322,3 +324,16 @@ A scheduled Claude task runs on the **1st of every month at 9:00 AM**:
 | Apr 2026 | Cloudflare Worker for Twilio SMS (workers/sms-worker.js) | d27f435 |
 | Apr 2026 | Domain purchased: patisseriegregory.ca via Cloudflare | — |
 | Apr 2026 | Monthly maintenance scheduled task created | — |
+| Apr 2026 | Catering quote modal + 6 event cards with Get a Quote buttons | — |
+| Apr 2026 | Fixed: mobile nav desktop visibility, catering card flex layout | 95a9d9e |
+| Apr 2026 | Fixed: quote form submit (hidden required select blocked validation) | f2d3b60 |
+| Apr 2026 | Fixed: nav overlay display, body scroll lock, Gallery nav link | f2d3b60 |
+| Apr 2026 | Security: escapeHtml() for XSS prevention in order success modal | — |
+| Apr 2026 | Security: CSP header added to _headers, X-XSS-Protection | — |
+| Apr 2026 | SEO: enhanced meta tags, hreflang, FAQPage JSON-LD schema | — |
+| Apr 2026 | SEO: sitemap.xml + robots.txt created | — |
+| Apr 2026 | i18n: html lang attr updates on language switch, nav_gallery key | — |
+| Apr 2026 | Copywriting: French catering card descriptions, improved OG tags | — |
+| Apr 2026 | Copyright year 2025 → 2026 in all 4 languages | — |
+| Apr 2026 | SW cache v5 → v7, cache-bust ?v=4 → ?v=5 | — |
+| Apr 2026 | Monthly maintenance task updated with full new checklist | — |

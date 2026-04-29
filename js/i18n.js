@@ -10,6 +10,7 @@ const translations = {
     nav_menu:      'Our Menu',
     nav_order:     'Order Online',
     nav_catering:  'Catering',
+    nav_gallery:   'Gallery',
     nav_about:     'About',
     nav_contact:   'Contact',
     nav_cart:      'Cart',
@@ -111,6 +112,7 @@ const translations = {
     nav_menu:      'Notre Carte',
     nav_order:     'Commander en ligne',
     nav_catering:  'Traiteur',
+    nav_gallery:   'Galerie',
     nav_about:     'À propos',
     nav_contact:   'Contact',
     nav_cart:      'Panier',
@@ -203,6 +205,7 @@ const translations = {
     nav_menu:      'Meni Nou',
     nav_order:     'Kòmande sou entènèt',
     nav_catering:  'Traiteur',
+    nav_gallery:   'Galeri',
     nav_about:     'Sou nou',
     nav_contact:   'Kontakte nou',
     nav_cart:      'Panye',
@@ -295,6 +298,7 @@ const translations = {
     nav_menu:      'Nuestro Menú',
     nav_order:     'Ordenar en línea',
     nav_catering:  'Catering',
+    nav_gallery:   'Galería',
     nav_about:     'Nosotros',
     nav_contact:   'Contacto',
     nav_cart:      'Carrito',
@@ -397,7 +401,13 @@ function setLanguage(lang) {
   updateLangButtons();
 }
 
+const LANG_DIR = { en: 'ltr', fr: 'ltr', ht: 'ltr', es: 'ltr' };
+
 function applyTranslations() {
+  // Update <html lang> and dir attributes for SEO + accessibility
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = LANG_DIR[currentLang] || 'ltr';
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const attr = el.getAttribute('data-i18n-attr');
