@@ -479,7 +479,7 @@ function showOrderSuccessModal(order, receiptText, cartTotal) {
           <div style="display:flex;flex-direction:column;gap:.55rem">
             <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
               <span style="color:#4CAF50;font-size:1rem">✓</span>
-              <span>📧 Order saved — Gregory notified by email</span>
+              <span>📧 Order saved &mdash; Gregory notified by email</span>
             </div>
             <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#5C3317">
               <span style="color:#4CAF50;font-size:1rem">✓</span>

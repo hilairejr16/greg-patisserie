@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greg Patisserie &mdash; Logo Exporter</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background:#1a1a2e; color:#eee; padding:2rem; }
+    h1 { color:#D4AF37; font-size:1.8rem; margin-bottom:.3rem; }
+    p.sub { color:#999; font-size:.9rem; margin-bottom:2rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .card { background:#2a2a3e; border-radius:14px; padding:1.5rem; }
+    .card h3 { color:#D4AF37; font-size:1rem; margin-bottom:.3rem; }
+    .card p { color:#aaa; font-size:.78rem; margin-bottom:1rem; line-height:1.5; }
+    .preview { background:#fff; border-radius:8px; padding:12px; text-align:center; margin-bottom:1rem; min-height:120px; display:flex; align-items:center; justify-content:center; }
+    .preview img { max-width:100%; max-height:160px; }
+    .sizes { display:flex; flex-direction:column; gap:.5rem; }
+    .size-row { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+    .size-label { font-size:.75rem; color:#aaa; min-width:140px; }
+    .btn { padding:6px 14px; border:none; border-radius:20px; font-size:.75rem; font-weight:600; cursor:pointer; transition:all .2s; }
+    .btn-png { background:#D4AF37; color:#1a1a2e; }
+    .btn-jpg { background:#8B6914; color:#fff; }
+    .btn:hover { opacity:.85; transform:translateY(-1px); }
+    .status { margin-top:1.5rem; background:#0d3320; border-radius:10px; padding:1rem 1.2rem; font-size:.82rem; color:#4CAF50; display:none; }
+    .all-btn { background:#D4AF37; color:#1a1a2e; border:none; border-radius:50px; padding:12px 30px; font-size:.95rem; font-weight:700; cursor:pointer; margin-bottom:2rem; transition:all .2s; }
+    .all-btn:hover { background:#F0D060; }
+    canvas { display:none; }
+    .section-title { color:#D4AF37; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; margin-bottom:.4rem; font-weight:700; }
+  </style>
+</head>
+<body>
+
+<h1>🎨 Greg Patisserie &mdash; Logo Exporter</h1>
+<p class="sub">Click any button to download a logo. Files save to your Downloads folder automatically.</p>
+
+<button class="all-btn" onclick="downloadAll()">⬇️ Download ALL Logos (PNG + JPEG)</button>
+
+<div class="grid" id="logo-grid"></div>
+<div class="status" id="status"></div>
+<canvas id="cvs"></canvas>
+
+<script>
+const LOGOS = [
+  {
+    id: 'logo-social',
+    file: '../images/logo-social.svg',
+    name: 'Logo Social (Square)',
+    desc: 'Square logo &mdash; best for profile photos on all platforms',
+    sizes: [
+      { label: 'Google Business (720×720)', w: 720, h: 720 },
+      { label: 'Instagram / TikTok (500×500)', w: 500, h: 500 },
+      { label: 'Facebook / Twitter (400×400)', w: 400, h: 400 },
+      { label: 'Full Resolution (1024×1024)', w: 1024, h: 1024 },
+    ]
+  },
+  {
+    id: 'icon-app',
+    file: '../images/icon-app.svg',
+    name: 'App Icon (Square)',
+    desc: 'App store icon &mdash; also great for Google Maps listing',
+    sizes: [
+      { label: 'Google Play / App Store (1024×1024)', w: 1024, h: 1024 },
+      { label: 'Standard (512×512)', w: 512, h: 512 },
+    ]
+  },
+  {
+    id: 'logo-main',
+    file: '../images/logo-main.svg',
+    name: 'Logo Horizontal (Wide)',
+    desc: 'Wide banner logo &mdash; for Facebook cover, email headers, print',
+    sizes: [
+      { label: 'Facebook Cover (1200×628)', w: 1200, h: 628 },
+      { label: 'Email Header (600×200)', w: 600, h: 200 },
+      { label: 'Standard (800×300)', w: 800, h: 300 },
+    ]
+  },
+  {
+    id: 'logo',
+    file: '../images/logo.svg',
+    name: 'Logo (Default)',
+    desc: 'General purpose logo',
+    sizes: [
+      { label: 'Standard (800×400)', w: 800, h: 400 },
+      { label: 'Large (1200×600)', w: 1200, h: 600 },
+    ]
+  },
+];
+
+// Preload images
+const imgCache = {};
+
+async function loadSVG(url) {
+  if (imgCache[url]) return imgCache[url];
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => { imgCache[url] = img; resolve(img); };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+async function exportLogo(fileUrl, filename, w, h, format) {
+  const img = await loadSVG(fileUrl);
+  const cvs = document.getElementById('cvs');
+  cvs.width = w;
+  cvs.height = h;
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0, 0, w, h);
+
+  // White background for JPEG
+  if (format === 'jpeg') {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // Draw SVG maintaining aspect ratio, centered
+  const scale = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+  const sw = img.naturalWidth * scale;
+  const sh = img.naturalHeight * scale;
+  const sx = (w - sw) / 2;
+  const sy = (h - sh) / 2;
+  ctx.drawImage(img, sx, sy, sw, sh);
+
+  const mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/png';
+  const ext = format === 'jpeg' ? 'jpg' : 'png';
+  const quality = format === 'jpeg' ? 0.92 : 1.0;
+
+  const blob = await new Promise(res => cvs.toBlob(res, mimeType, quality));
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${filename}_${w}x${h}.${ext}`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  await new Promise(r => setTimeout(r, 300)); // small delay between downloads
+}
+
+async function downloadAll() {
+  const btn = document.querySelector('.all-btn');
+  btn.textContent = '⏳ Downloading...';
+  btn.disabled = true;
+
+  for (const logo of LOGOS) {
+    for (const size of logo.sizes) {
+      await exportLogo(logo.file, logo.id, size.w, size.h, 'png');
+      await exportLogo(logo.file, logo.id, size.w, size.h, 'jpeg');
+    }
+  }
+
+  btn.textContent = '✅ All Downloaded!';
+  btn.disabled = false;
+
+  const status = document.getElementById('status');
+  status.style.display = 'block';
+  status.innerHTML = '✅ All logos exported to your Downloads folder as PNG and JPEG. Check your Downloads folder now!';
+}
+
+// Build the UI
+const grid = document.getElementById('logo-grid');
+LOGOS.forEach(logo => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <h3>${logo.name}</h3>
+    <p>${logo.desc}</p>
+    <div class="preview"><img src="${logo.file}" alt="${logo.name}" onerror="this.parentElement.innerHTML='<span style=color:#666;font-size:.8rem>Preview not available &mdash; run from project folder</span>'"></div>
+    <div class="section-title">Export Sizes</div>
+    <div class="sizes" id="sizes-${logo.id}"></div>
+  `;
+  grid.appendChild(card);
+
+  const sizesDiv = card.querySelector(`#sizes-${logo.id}`);
+  logo.sizes.forEach(size => {
+    const row = document.createElement('div');
+    row.className = 'size-row';
+    row.innerHTML = `
+      <span class="size-label">${size.label}</span>
+      <button class="btn btn-png" onclick="exportLogo('${logo.file}','${logo.id}',${size.w},${size.h},'png')">⬇ PNG</button>
+      <button class="btn btn-jpg" onclick="exportLogo('${logo.file}','${logo.id}',${size.w},${size.h},'jpeg')">⬇ JPEG</button>
+    `;
+    sizesDiv.appendChild(row);
+  });
+});
+</script>
+</body>
+</html>
