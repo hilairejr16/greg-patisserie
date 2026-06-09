@@ -428,9 +428,6 @@ function showPaymentInstructions(method) {
 
   const instructions = {
     interac: `<strong>Interac e-Transfer:</strong> Send payment to phone number <em>(514) 884-8463</em>. Include your name and order details in the message. We will confirm your order upon receipt.`,
-    credit: `<strong>Credit Card:</strong> You will be redirected to our secure Stripe payment page after order confirmation.`,
-    debit: `<strong>Debit / Chequing:</strong> In-person debit accepted at pickup, or e-Transfer to our account. Details sent by email.`,
-    paypal: `<strong>PayPal:</strong> After submitting your order, click the <strong>"Pay with PayPal"</strong> button to complete payment instantly at <a href="${PAYPAL_ME}" target="_blank" rel="noopener" style="color:#003087;font-weight:600">paypal.me/gregpatisserie</a>.`,
     cash: `<strong>Cash on Pickup:</strong> Pay when you collect your order at our location in Laval, QC.`,
   };
 
